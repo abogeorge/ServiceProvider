@@ -3,8 +3,46 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{FCB78D8B-A5E8-4F27-AB10-32639A0B153A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainLayer", "DomainLayer", "{E6B7AED3-0366-434C-A183-B14A53405B78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UTests", "UTests", "{51394303-480D-4604-9A6A-768CF81EC61D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMapper", "DataMapper\DataMapper.csproj", "{EC919689-1FF5-4BCE-BC06-653FECA28ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{28F63181-13E6-43B2-9157-CB7A309AA3B5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC919689-1FF5-4BCE-BC06-653FECA28ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC919689-1FF5-4BCE-BC06-653FECA28ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC919689-1FF5-4BCE-BC06-653FECA28ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC919689-1FF5-4BCE-BC06-653FECA28ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC919689-1FF5-4BCE-BC06-653FECA28ADA} = {FCB78D8B-A5E8-4F27-AB10-32639A0B153A}
+		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA} = {E6B7AED3-0366-434C-A183-B14A53405B78}
+		{28F63181-13E6-43B2-9157-CB7A309AA3B5} = {E6B7AED3-0366-434C-A183-B14A53405B78}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
