@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{28F63181-13E6-43B2-9157-CB7A309AA3B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceProviderUnitTests", "ServiceProviderUnitTests\ServiceProviderUnitTests.csproj", "{6DEF900B-E97C-45AC-BD06-441FC6A032DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F63181-13E6-43B2-9157-CB7A309AA3B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DEF900B-E97C-45AC-BD06-441FC6A032DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DEF900B-E97C-45AC-BD06-441FC6A032DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DEF900B-E97C-45AC-BD06-441FC6A032DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DEF900B-E97C-45AC-BD06-441FC6A032DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{EC919689-1FF5-4BCE-BC06-653FECA28ADA} = {FCB78D8B-A5E8-4F27-AB10-32639A0B153A}
 		{162FB3CA-075F-48FD-A60E-A4BAE9A3ACCA} = {E6B7AED3-0366-434C-A183-B14A53405B78}
 		{28F63181-13E6-43B2-9157-CB7A309AA3B5} = {E6B7AED3-0366-434C-A183-B14A53405B78}
+		{6DEF900B-E97C-45AC-BD06-441FC6A032DE} = {51394303-480D-4604-9A6A-768CF81EC61D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
