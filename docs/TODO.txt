@@ -1,0 +1,2 @@
+- LOG: add DB log
+- ADDCUSTOMER: check email unicity or smtg
