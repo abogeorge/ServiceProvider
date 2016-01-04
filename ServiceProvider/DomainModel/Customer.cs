@@ -22,7 +22,7 @@ namespace DomainModel
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "First name of the customer can not be null!")]
+        [NotNullValidator(MessageTemplate = "First name of the customer cannot be null!")]
         [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "First name should have between {3} and {30} letters!")]
         public String FirstName
         {
@@ -30,7 +30,7 @@ namespace DomainModel
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "Last name of the customer can not be null!")]
+        [NotNullValidator(MessageTemplate = "Last name of the customer cannot be null!")]
         [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Last name should have between {3} and {30} letters")]
         public String LastName
         {
@@ -38,7 +38,7 @@ namespace DomainModel
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "Adress of the customer can not be null!")]
+        [NotNullValidator(MessageTemplate = "Adress of the customer cannot be null!")]
         [StringLengthValidator(5, RangeBoundaryType.Inclusive, 100, RangeBoundaryType.Inclusive, ErrorMessage = "Adress should have between {5} and {100} letters!")]
         public String Adress
         {
@@ -46,7 +46,7 @@ namespace DomainModel
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "The email of the customer can not be null!")]
+        [NotNullValidator(MessageTemplate = "The email of the customer cannot be null!")]
         [RegexValidator(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Invalid email!")]
         public String Email
         {
@@ -61,7 +61,7 @@ namespace DomainModel
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "The CNP of the customer can not be null!")]
+        [NotNullValidator(MessageTemplate = "The CNP of the customer cannot be null!")]
         [RegexValidator(@"^[1-9]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-4]\d|5[0-2]|99)(00[1-9]|0[1-9]\d|[1-9]\d\d)\d$", ErrorMessage = "Invalid CNP!")]
         public String CNP
         {

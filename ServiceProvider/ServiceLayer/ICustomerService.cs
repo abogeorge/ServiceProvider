@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer
 {
-    interface ICustomerService
+    public interface ICustomerService
     {
         bool AddCustomer(Customer customer);
     }
