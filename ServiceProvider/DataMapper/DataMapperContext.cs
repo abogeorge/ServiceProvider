@@ -12,6 +12,7 @@ namespace DataMapper
     {
         public DataMapperContext() : base("connection_string")
         {
+            Database.SetInitializer<DataMapperContext>(new DropCreateDatabaseAlways<DataMapperContext>());
         }
 
         public DbSet<Customer> Customers
