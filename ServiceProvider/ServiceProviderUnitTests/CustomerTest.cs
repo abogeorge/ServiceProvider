@@ -202,7 +202,37 @@ namespace ServiceProviderUnitTests
             });
         }
 
-        // TODO: Add CNP "extensive" tests
+        // Add customer with short cnp 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestAddCustomerWithShortCNP()
+        {
+            customerService.AddCustomer(new Customer
+            {
+                FirstName = "Validfn",
+                LastName = "Validln",
+                Adress = "ValidAdress",
+                Email = "client.valid@provider.com",
+                Phone = "0268.111.222",
+                CNP = "192041708166"
+            });
+        }
+
+        // Add customer with wrong cnp 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestAddCustomerWithWrongCNP()
+        {
+            customerService.AddCustomer(new Customer
+            {
+                FirstName = "Validfn",
+                LastName = "Validln",
+                Adress = "ValidAdress",
+                Email = "client.valid@provider.com",
+                Phone = "0268.111.222",
+                CNP = "1920417081661"
+            });
+        }
 
         // Add a complete customer
         [TestMethod]
