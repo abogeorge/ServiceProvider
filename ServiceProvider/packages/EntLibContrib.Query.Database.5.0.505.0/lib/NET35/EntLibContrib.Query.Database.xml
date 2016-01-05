@@ -1,0 +1,653 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntLibContrib.Query.Database</name>
+    </assembly>
+    <members>
+        <member name="T:EntLibContrib.Query.Configuration.DataParameterData">
+            <summary>
+            Type to hold the elements of a single query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataParameterData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataParameterData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataParameterData.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="dbType">Type of the parameter.</param>
+            <param name="direction">The direction of the parameter relative to the data source.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataParameterData.#ctor(System.String,System.Type,System.Data.DbType,System.Data.ParameterDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The type.</param>
+            <param name="dbType">Type of the parameter.</param>
+            <param name="direction">The direction of the parameter relative to the data source.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataParameterData.GetRegistrations(System.String)">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.NameValueParameterData"/>.
+            </summary>
+            <param name="name">The name to use when determining references to child elements.</param>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.DataParameterData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataParameterData.DbType">
+            <summary>
+            Gets or sets the type of the parameter.
+            </summary>
+            <value>The type of the parameter.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataParameterData.Direction">
+            <summary>
+            Gets or sets the parameter direction.
+            </summary>
+            <value>The parameter direction.</value>
+            <remarks>the directions are In or Out</remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Parameters.DataSetParameter">
+            <summary>
+            Type to hold the elements of a single DataSet query parameter
+            </summary>
+            <remarks>Note that parameter values for this type of parameter come from the dataset and
+            not the base parameter 'value' property</remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Parameters.DataParameter">
+            <summary>
+            Type to hold the elements of a single database query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataParameter.#ctor(System.String)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Parameters.DataParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataParameter.#ctor(System.String,System.Data.DbType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataParameter.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The parameter type.</param>
+            <param name="direction">The direction of the parameter relative to the DataSet.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.DataParameter.DbType">
+            <summary>
+            Gets or sets the type of the parameter.
+            </summary>
+            <value>The type of the parameter.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.DataParameter.Direction">
+            <summary>
+            Gets or sets the parameter direction.
+            </summary>
+            <value>The parameter direction.</value>
+            <remarks>the directions are In or Out</remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataSetParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.#ctor(System.String,System.Data.DbType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataSetParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The parameter type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataSetParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The parameter type.</param>
+            <param name="direction">The direction of the parameter relative to the data source.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataSetParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The parameter type.</param>
+            <param name="direction">The direction of the parameter relative to the DataSet.</param>
+            <param name="column">The dataset column name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection,System.String,System.Data.DataRowVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.DataSetParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The parameter type.</param>
+            <param name="direction">The direction of the parameter relative to the DataSet.</param>
+            <param name="column">The source column.</param>
+            <param name="version">The source version.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.DataSetParameter.ValidateAndStoreParameters(System.String,System.Data.DataRowVersion)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="dataSetColumn">The data set column.</param>
+            <param name="dataSetVersion">The data set version.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.DataSetParameter.Column">
+            <summary>
+            Gets or sets the source column.
+            </summary>
+            <value>The source column.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.DataSetParameter.Version">
+            <summary>
+            Gets or sets the source version.
+            </summary>
+            <value>The source version.</value>
+            <remarks>
+            Versions are Current, Default, Original and Proposed.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Instrumentation.QueryDatabaseInstrumentationInstaller">
+            <summary>
+            Let the system know that the InstallUtil.exe tool will be run against this assembly
+            </summary>
+        </member>
+        <member name="F:EntLibContrib.Query.Instrumentation.QueryDatabaseInstrumentationInstaller.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Instrumentation.QueryDatabaseInstrumentationInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Instrumentation.QueryDatabaseInstrumentationInstaller.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.ComponentModel.Component"></see> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Instrumentation.QueryDatabaseInstrumentationInstaller.#ctor">
+            <summary>
+            Represents the installer for the instrumentation events. Not intended for direct use.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.DataSetParameterData">
+            <summary>
+            Type to hold the elements of a single query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataSetParameterData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataSetParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataSetParameterData.#ctor(System.String,System.Data.DbType,System.Data.ParameterDirection,System.String,System.Data.DataRowVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataSetParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="dbType">Type of the parameter.</param>
+            <param name="direction">The direction of the parameter relative to the DataSet.</param>
+            <param name="column">The source column.</param>
+            <param name="version">The source version.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataSetParameterData.GetRegistrations(System.String)">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.DataSetParameterData"/>.
+            </summary>
+            <param name="name">The name to use when determining references to child elements.</param>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.DataSetParameterData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataSetParameterData.Column">
+            <summary>
+            Gets or sets the source column.
+            </summary>
+            <value>The source column.</value>
+            <remarks>Only required when using a Dataset as the source</remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataSetParameterData.Version">
+            <summary>  
+            Gets or sets the source version.
+            </summary>
+            <value>The source version.</value>
+            <remarks>
+            Only required when using a Dataset as the source.
+            Versions are Current, Default, Original and Proposed.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Database.Properties.DesignResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataCommandDescription">
+            <summary>
+              Looks up a localized string similar to The command can be a stored procedure, a SQL query string or a table name. .
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataCommandDisplayName">
+            <summary>
+              Looks up a localized string similar to Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to The command type specify what the command represents (a stored procedure, a SQL statement or a table)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataCommandTypeDisplayName">
+            <summary>
+              Looks up a localized string similar to Command Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataDatabaseInstanceNameDescription">
+            <summary>
+              Looks up a localized string similar to The name of the database instance to use for the data source. The Instance must be defined in Data configuration..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataDatabaseInstanceNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Database Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataDescription">
+            <summary>
+              Looks up a localized string similar to The Data Command provide custom commands for Data Queries..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataCommandDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Data Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDbTypeDescription">
+            <summary>
+              Looks up a localized string similar to The DbType data type..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDbTypeDisplayName">
+            <summary>
+              Looks up a localized string similar to DbType.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDescription">
+            <summary>
+              Looks up a localized string similar to Data Parameters are used for nearly all data queries and add DbType data type and Direction information to data query parameters so that you can state the data type and direction (In, Out or InOut) of your parameters..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDirectionDescription">
+            <summary>
+              Looks up a localized string similar to The direction of the parameter..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDirectionDisplayName">
+            <summary>
+              Looks up a localized string similar to Direction.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataParameterDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Data Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataCommandDescription">
+            <summary>
+              Looks up a localized string similar to The command can be a stored procedure, a SQL query string or a table name. .
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataCommandDisplayName">
+            <summary>
+              Looks up a localized string similar to Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to The command type specify what the command represents (a stored procedure, a SQL statement or a table)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataCommandTypeDisplayName">
+            <summary>
+              Looks up a localized string similar to Command Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataDatabaseInstanceNameDescription">
+            <summary>
+              Looks up a localized string similar to The name of the database instance to use for the data source. The Instance must be defined in Data configuration..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataDatabaseInstanceNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Database Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataDescription">
+            <summary>
+              Looks up a localized string similar to The Data Queries target relational databases and because these queries interface to the DAAB can support any relational database that the DAAB can. Data Queries convert to DBCommand objects through the DAAB and can run SQL query strings, call stored procedures (where supported) and even target tables directly (where supported). Parameters convert over to DBParameter objects..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataQueryDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Data Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataColumnDescription">
+            <summary>
+              Looks up a localized string similar to The source column name from the DataSet..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataColumnDisplayName">
+            <summary>
+              Looks up a localized string similar to Column.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataDescription">
+            <summary>
+              Looks up a localized string similar to The DataSet parameters are sometimes referred to as DataAdapter parameters in that they are used when the data source is a DataSet. This parameter type adds two additional properties to the ones used for Data Parameters..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataDisplayName">
+            <summary>
+              Looks up a localized string similar to DataSet Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataVersionDescription">
+            <summary>
+              Looks up a localized string similar to The source version..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Database.Properties.DesignResources.DataSetParameterDataVersionDisplayName">
+            <summary>
+              Looks up a localized string similar to Version.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.DataCommandData">
+            <summary>
+            Configuration data defining DataCustomCommandData.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataCommandData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataCommandData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataCommandData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataCommandData"/> class.
+            </summary>
+            <param name="name">The provider name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataCommandData.GetRegistration">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/>.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataCommandData.Name">
+            <summary>
+            Name of the data provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataCommandData.DatabaseInstanceName">
+            <summary>
+            Name of the database instance to be used by the command. Instance must be defined in Data configuration.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataCommandData.Command">
+            <summary>
+            The command name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataCommandData.CommandType">
+            <summary>
+            The command type.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.DataQueryData">
+            <summary>
+            Configuration information for DataQueryData. This class represents the extra information, over and
+            above what is defined in <see cref="T:EntLibContrib.Query.Configuration.QueryData"/>, needed to connect resource to the Data block.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataQueryData"/> class.
+            </summary>
+            <overloads>
+            Initializes an instance of a <see cref="T:EntLibContrib.Query.Configuration.DataQueryData"/> class.
+            </overloads>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataQueryData.#ctor(System.String,System.String,System.String,System.String,System.String,System.Data.CommandType)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.DataQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.DataQueryData"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="databaseInstanceName">Name of the database instance to use for the data source. Instance must be defined in Data configuration.</param>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.DataQueryData.GetQueryCreationExpression">
+            <summary>
+            Returns the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> entry for the current concrete type represented by this 
+            configuration object.
+            </summary>
+            <returns>A registry entry.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataQueryData.DatabaseInstanceName">
+            <summary>
+            Name of the database instance to use for the data source. The Instance must be defined in Data configuration.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataQueryData.Command">
+            <summary>
+            Name of the data command to use. This can be a Stored Procedure name or a SQL query string.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DataQueryData.CommandType">
+            <summary>
+            Type of data command to use. This can be a stored procedure or text.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.DataCommand">
+            <summary>
+            Simple class to hold the components of a data command
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.DataCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.#ctor(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Data.CommandType,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.DataCommand"/> class.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.#ctor(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Data.CommandType,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.DataCommand"/> class.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.ExecuteForRead">
+            <summary>
+            Executes a read action.
+            </summary>
+            <returns>
+            a DataSet containing the results of the read action
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.ExecuteForWrite">
+            <summary>
+            Executes a write action.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.ValidateAndStoreParameters(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Data.CommandType)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="databaseInstance">The database instance.</param>
+            <param name="databaseCommand">The database command.</param>
+            <param name="databaseCommandType">Type of the database command.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.BuildDbCommand">
+            <summary>
+            Builds a generic <see cref="T:System.Data.Common.DbCommand"/> object.
+            </summary>
+            <returns>A <see cref="T:System.Data.Common.DbCommand"/> object.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.GetParameterValues(System.Data.Common.DbCommand)">
+            <summary>
+            Gets the parameter values returned from the command execution
+            and feeds the values back into the parameter dictionary.
+            </summary>
+            <remarks>this action will retrieve any output parameter values</remarks>
+            <param name="dbCommand">The db command.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.SetParameterSize(System.Data.ParameterDirection)">
+            <summary>
+            Sets the size of the parameter depending on the parameter direction.
+            </summary>
+            <param name="direction">The parameter direction.</param>
+            <returns>an integer value</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.DataCommand.SetNullable(System.Data.ParameterDirection)">
+            <summary>
+            Sets the nullable value depending on the parameter direction.
+            </summary>
+            <param name="direction">The parameter direction.</param>
+            <returns>true if the parameter must be nullable or false if not</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.DataCommand.Database">
+            <summary>
+            Gets the database.
+            </summary>
+            <value>The database.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.DataCommand.Command">
+            <summary>
+            Gets the command.
+            </summary>
+            <value>The command.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.DataCommand.CommandType">
+            <summary>
+            Gets the command type.
+            </summary>
+            <value>The command type.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.DataQuery">
+            <summary>
+            Data Query.
+            </summary>
+            <remarks>
+            This provider creates a query for a database.
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.DataQuery.#ctor(System.String,Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Data.CommandType,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.DataQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="database">The database.</param>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.DataQuery.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.DataQuery.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.DataQuery.ValidateAndStoreParameters(Microsoft.Practices.EnterpriseLibrary.Data.Database,System.String,System.Data.CommandType)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="databaseInstance">The database instance.</param>
+            <param name="databaseCommand">The database command.</param>
+            <param name="databaseCommandType">Type of the database command.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.DataQuery.BuildCommand">
+            <summary>
+            Builds the command to be invoked.
+            </summary>
+            <returns>An <see cref="T:EntLibContrib.Query.ICommand"/> object</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.DataQuery.QueryType">
+            <summary>
+            Gets the type of the query.
+            </summary>
+            <value>The type of the query.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.DataQuery.Command">
+            <summary>
+            Gets or sets the command.
+            </summary>
+            <value>The command.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.DataQuery.CommandType">
+            <summary>
+            Gets or sets the type of the command.
+            </summary>
+            <value>The type of the command.</value>
+        </member>
+    </members>
+</doc>

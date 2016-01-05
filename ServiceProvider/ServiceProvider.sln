@@ -50,6 +50,7 @@ Global
 		{6DEF900B-E97C-45AC-BD06-441FC6A032DE} = {51394303-480D-4604-9A6A-768CF81EC61D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EntLibContrib.Query.5.0.505.0\lib\NET35;packages\EntLibContrib.Query.Database.5.0.505.0\lib\NET35
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

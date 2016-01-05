@@ -14,25 +14,25 @@ namespace ServiceLayer.ServicesImplementation
 {
     public class CustomerService : ICustomerService
     {
-       // private ServiceProviderLogger logger;
+        //private ServiceProviderLogger logger;
 
         public CustomerService()
         {
-          //  logger = ServiceProviderLogger.GetInstance();
+            //logger = ServiceProviderLogger.GetInstance();
         }
 
         bool ICustomerService.AddCustomer(Customer customer)
         {
-            //logger.logInfo("Attempting to add a new customer ... ");
+           // logger.logInfo("Attempting to add a new customer ... ");
 
             var validationResult = Validation.Validate<Customer>(customer);
-            if (!validationResult.IsValid)
+            if (!validationResult.IsValid || !customer.ValidateCNP())
             {
                 String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
                 throw new ValidationException(message);
             }
             DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.AddCustomer(customer);
-            // logger.logInfo("Customer " + customer.FirstName + " " + customer.LastName + " was added!");
+            //logger.logInfo("Customer " + customer.FirstName + " " + customer.LastName + " was added!");
             return true;
         }
     }

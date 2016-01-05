@@ -1,0 +1,3152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntLibContrib.Query</name>
+    </assembly>
+    <members>
+        <member name="T:EntLibContrib.Query.IParameter">
+            <summary>
+            This interface defines the contract that must be implemented by all parameter classes. 
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.IParameter.Name">
+            <summary>
+            Gets or sets the name of the parameter.
+            </summary>
+            <value>The name of the parameter.</value>
+            <remarks>Exclude parameter name tokens for generic queries e.g. for SQL parameter formats
+            like @Name the @ symbol prefix can be excluded</remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.IParameter.Value">
+            <summary>
+            Gets or sets the parameter value.
+            </summary>
+            <value>The parameter value.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.QueryType">
+            <summary>
+            The type of query
+            </summary>
+            <remarks>
+            This enumeration is used mainly for instrumentation
+            enabling statistics to be gathered by query type
+            </remarks>
+        </member>
+        <member name="F:EntLibContrib.Query.QueryType.Custom">
+            <summary>
+            A custom query (default)
+            </summary>
+        </member>
+        <member name="F:EntLibContrib.Query.QueryType.Data">
+            <summary>
+            A data query
+            </summary>
+        </member>
+        <member name="F:EntLibContrib.Query.QueryType.File">
+            <summary>
+            A file-based query
+            </summary>
+        </member>
+        <member name="F:EntLibContrib.Query.QueryType.Service">
+            <summary>
+            A service query
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Parameters.XmlParameter">
+            <summary>
+            Parameter to hold the name, namespace and value elements of a single xml query parameter
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Parameters.Parameter">
+            <summary>
+            Base type to hold the name and value elements of a single name and value query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.Parameter.#ctor(System.String)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Parameters.Parameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.Parameter.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates and stores the parameters.
+            </summary>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.Parameter.Name">
+            <summary>
+            Gets or sets the name of the parameter.
+            </summary>
+            <value>The name of the parameter.</value>
+            <remarks>Exclude parameter name tokens for generic queries e.g. for SQL parameter formats
+            like @Name the @ symbol prefix can be excluded</remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.Parameter.Value">
+            <summary>
+            Gets or sets the parameter value.
+            </summary>
+            <value>The parameter value.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.XmlParameter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.XmlParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.XmlParameter.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.XmlParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="namespaceName">Name of the namespace.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Parameters.XmlParameter.Namespace">
+            <summary>
+            Gets or sets the namespace of the parameter.
+            </summary>
+            <value>The namespace of the parameter.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.ICommand">
+            <summary>
+            This interface defines the contract that must be implemented by all commands. 
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.ICommand.ExecuteForRead">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            Output parameters will update the parameter property values.
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.ICommand.ExecuteForWrite">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <remarks>
+            Output parameters will update the parameter property values.
+            </remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.ICommand.Parameters">
+            <summary>
+            Gets the query parameters.
+            </summary>
+            <value>A dictionary of parameters.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Properties.InternalResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CategoryCustom">
+            <summary>
+              Looks up a localized string similar to Custom.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CategoryGeneral">
+            <summary>
+              Looks up a localized string similar to General.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CategoryProvider">
+            <summary>
+              Looks up a localized string similar to Provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CommandPolicyNameTemplate">
+            <summary>
+              Looks up a localized string similar to Specify settings for command &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CommandsCategoryName">
+            <summary>
+              Looks up a localized string similar to Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CopyUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Create a copy of a ParameterSet.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CopyUICommandText">
+            <summary>
+              Looks up a localized string similar to Copy.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomCommandCommandTypePartName">
+            <summary>
+              Looks up a localized string similar to Assembly qualified custom command type name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomCommandExtensionsDescription">
+            <summary>
+              Looks up a localized string similar to A set of custom configuration attributes for this custom parameter type (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomCommandNodeTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom command which implements ICommand..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomCommandUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Custom Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomCommandUICommandText">
+            <summary>
+              Looks up a localized string similar to Custom Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterDataAttributesPartName">
+            <summary>
+              Looks up a localized string similar to Attributes.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterDataTypePartName">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterExtensionsDescription">
+            <summary>
+              Looks up a localized string similar to A set of custom configuration attributes for this custom parameter type (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterNodeTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom parameter which implements IParameter..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Custom Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomParameterUICommandText">
+            <summary>
+              Looks up a localized string similar to Custom Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryDataAttributesPartName">
+            <summary>
+              Looks up a localized string similar to Attributes.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryDataTypePartName">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryExtensionsDescription">
+            <summary>
+              Looks up a localized string similar to A set of custom configuration attributes for this custom query type (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryNodeTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom query which implements IQuery..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Custom Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.CustomQueryUICommandText">
+            <summary>
+              Looks up a localized string similar to Custom Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DatabaseInstanceDescription">
+            <summary>
+              Looks up a localized string similar to The database instance to use for the data source.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataCommandCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom data command which inherits from DataCommand..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataCommandUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Data Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataCommandUICommandText">
+            <summary>
+              Looks up a localized string similar to Data Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterDbTypeDescription">
+            <summary>
+              Looks up a localized string similar to The data type of the parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterDbTypePartName">
+            <summary>
+              Looks up a localized string similar to Data Parameter Database Data Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterDirectionDescription">
+            <summary>
+              Looks up a localized string similar to The parameter direction.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterDirectionPartName">
+            <summary>
+              Looks up a localized string similar to Data Parameter Direction.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Data Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataParameterUICommandText">
+            <summary>
+              Looks up a localized string similar to Data Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCommandDescription">
+            <summary>
+              Looks up a localized string similar to The data command, this can be a stored procedure a SQL query string or a table name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCommandNameDescription">
+            <summary>
+              Looks up a localized string similar to A data command for special processing (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCommandPartName">
+            <summary>
+              Looks up a localized string similar to Data Query Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to The command type defines what the content of the command parameter represents.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCommandTypePartName">
+            <summary>
+              Looks up a localized string similar to Data Query Command Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryCustomCommandPartName">
+            <summary>
+              Looks up a localized string similar to Data Query Custom Command Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryDatabasePartName">
+            <summary>
+              Looks up a localized string similar to Data Query Database Instance name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Data Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataQueryUICommandText">
+            <summary>
+              Looks up a localized string similar to Data Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterColumnDescription">
+            <summary>
+              Looks up a localized string similar to The column name used when the source is a DataSet.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterColumnPartName">
+            <summary>
+              Looks up a localized string similar to DataSet Parameter Column name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a DataSet Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterUICommandText">
+            <summary>
+              Looks up a localized string similar to DataSet Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterVersionDescription">
+            <summary>
+              Looks up a localized string similar to The row version, needed when the source is a DataSet, default is current (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DataSetParameterVersionPartName">
+            <summary>
+              Looks up a localized string similar to DataSet Parameter Data Row Version.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultCommandCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultCustomCommandNodeName">
+            <summary>
+              Looks up a localized string similar to Custom Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultCustomParameterNodeName">
+            <summary>
+              Looks up a localized string similar to Custom Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultCustomQueryNodeName">
+            <summary>
+              Looks up a localized string similar to Custom Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultDataCommandCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to Data Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultDataCommandNodeName">
+            <summary>
+              Looks up a localized string similar to Data Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultDataParameterNodeName">
+            <summary>
+              Looks up a localized string similar to Data Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultDataQueryNodeName">
+            <summary>
+              Looks up a localized string similar to Data Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultDataSetParameterNodeName">
+            <summary>
+              Looks up a localized string similar to DataSet Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultFileCommandCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to File Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultFileCommandNodeName">
+            <summary>
+              Looks up a localized string similar to File Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultNameValueParameterNodeName">
+            <summary>
+              Looks up a localized string similar to Name Value Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultParameterCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to Parameters.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultParameterSetNodeName">
+            <summary>
+              Looks up a localized string similar to Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultQueryCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to Queries.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultQuerySettingsNodeName">
+            <summary>
+              Looks up a localized string similar to Query Application Block.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultServiceCommandCollectionNodeName">
+            <summary>
+              Looks up a localized string similar to Service Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultServiceCommandNodeName">
+            <summary>
+              Looks up a localized string similar to Service Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultWcfServiceQueryNodeName">
+            <summary>
+              Looks up a localized string similar to WCF Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultWebServiceQueryNodeName">
+            <summary>
+              Looks up a localized string similar to Web Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultXmlFileQueryNodeName">
+            <summary>
+              Looks up a localized string similar to Xml File Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.DefaultXmlParameterNodeName">
+            <summary>
+              Looks up a localized string similar to Xml Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ErrorQueryConfigurationFailedMessage">
+            <summary>
+              Looks up a localized string similar to The error occurred retrieving the configuration for instance &quot;{0}&quot;..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ErrorQueryOperationFailedMessage">
+            <summary>
+              Looks up a localized string similar to The error occurred using the &quot;{0}&quot; instance..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ErrorQueryReadFailedMessage">
+            <summary>
+              Looks up a localized string similar to An error occurred during an ExecuteForRead action.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ErrorQueryWriteFailedMessage">
+            <summary>
+              Looks up a localized string similar to An error occurred during an ExecuteForWrite action.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionCustomCommandNameNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The custom command name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionCustomCommandTypeNameNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The custom command type name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionDatabaseCommandNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The database command name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionDatabaseInstanceNull">
+            <summary>
+              Looks up a localized string similar to The database instance given is null..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionDataSetColumnNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The DataSet column name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionFileQueryDataFileInvalid">
+            <summary>
+              Looks up a localized string similar to The data file &quot;{0}&quot; is missing or invalid.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionFileQueryDataFileNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The data file given is null or empty..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionParameterNameNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The parameter name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionParameterSetNameNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The parameter set name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionPerformanceCounterRedefined">
+            <summary>
+              Looks up a localized string similar to The performance counter &apos;{0}&apos; in category &apos;{1}&apos; is redefined in type {2} with a different configuration..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionProviderNotDefined">
+            <summary>
+              Looks up a localized string similar to The provider {0} is not defined in configuration..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionQueryNameNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The query name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceCommandEndpointNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The endpoint name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceCommandMethodInvalid">
+            <summary>
+              Looks up a localized string similar to The method name &quot;{0}&quot; is invalid.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceCommandMethodNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The method name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceCommandServiceInvalid">
+            <summary>
+              Looks up a localized string similar to The service described by the type name &quot;{0}&quot; could not be found or loaded..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceCommandServiceNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The service given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceQueryMethodInvalid">
+            <summary>
+              Looks up a localized string similar to The method name &quot;{0}&quot; is invalid.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceQueryMethodNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The method name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceQueryServiceInvalid">
+            <summary>
+              Looks up a localized string similar to The service described by the type name &quot;{0}&quot; could not be found or loaded..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionServiceQueryServiceNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The service name given is null or empty..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionWcfServiceQueryEndpointNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The service endpoint given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionWcfServiceQueryOperationNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The service operation given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionWebServiceQueryWebMethodNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The web method given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionXmlFileCommandDataFileInvalid">
+            <summary>
+              Looks up a localized string similar to The data file &quot;{0}&quot; is missing or invalid.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionXmlFileCommandDataFileNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The data file given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionXmlFileCommandElementNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The element name given is null or empty.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ExceptionXmlFileQueryElementNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to The xml element given is null or empty..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileCommandCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom file command which inherits from FileCommand.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileCommandUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a File Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileCommandUICommandText">
+            <summary>
+              Looks up a localized string similar to File Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileQueryCommandNameDescription">
+            <summary>
+              Looks up a localized string similar to A file command for special processing (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileQueryDataFileDescription">
+            <summary>
+              Looks up a localized string similar to The File Query Data Source File.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.FileQueryDataFilePartName">
+            <summary>
+              Looks up a localized string similar to File Query Data File.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.MethodMustBeImplementedBySubclasses">
+            <summary>
+              Looks up a localized string similar to The GetQueryCreationExpression() method must be implemented by subclasses..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.MissingQuerySection">
+            <summary>
+              Looks up a localized string similar to The &quot;queryConfiguration&quot; section is not available in the supplied configuration source..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.NameValueParameterUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Name Value Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.NameValueParameterUICommandText">
+            <summary>
+              Looks up a localized string similar to Name Value Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.NullProviderName">
+            <summary>
+              Looks up a localized string similar to Null Provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParameterPolicyNameTemplate">
+            <summary>
+              Looks up a localized string similar to Specify settings for parameter &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParametersCategoryName">
+            <summary>
+              Looks up a localized string similar to Parameters.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParameterSetPolicyNameTemplate">
+            <summary>
+              Looks up a localized string similar to Specify settings for parameter set &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParameterSetsCategoryName">
+            <summary>
+              Looks up a localized string similar to Parameter Sets.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParameterSetUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ParameterSetUICommandText">
+            <summary>
+              Looks up a localized string similar to Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueriesCategoryName">
+            <summary>
+              Looks up a localized string similar to Queries.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryBlockName">
+            <summary>
+              Looks up a localized string similar to Enterprise Library Query Application Block.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryCountersCategoryHelpResource">
+            <summary>
+              Looks up a localized string similar to Enterprise Library Query Performance Counter Instances.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryMethodNameDescription">
+            <summary>
+              Looks up a localized string similar to The service method to be called..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryParameterSetNameDescription">
+            <summary>
+              Looks up a localized string similar to The name of the parameter set to use with this query (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryParameterSetPartName">
+            <summary>
+              Looks up a localized string similar to Query Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryPolicyNameTemplate">
+            <summary>
+              Looks up a localized string similar to Specify settings for query &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QuerySectionCategoryName">
+            <summary>
+              Looks up a localized string similar to Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QueryServiceNameDescription">
+            <summary>
+              Looks up a localized string similar to The service client type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QuerySettingsPolicyName">
+            <summary>
+              Looks up a localized string similar to Specify settings for the query application block.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QuerySettingsUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add the Query Application Block.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.QuerySettingsUICommandText">
+            <summary>
+              Looks up a localized string similar to Query Application Block.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceCommandCommandTypeDescription">
+            <summary>
+              Looks up a localized string similar to A custom service command which inherits from ServiceCommand.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceCommandUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Service Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceCommandUICommandText">
+            <summary>
+              Looks up a localized string similar to Service Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryAddressDescription">
+            <summary>
+              Looks up a localized string similar to The address (Url) for the service, when not using the default configured address (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryAddressPartName">
+            <summary>
+              Looks up a localized string similar to Service Query Address.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryCommandNameDescription">
+            <summary>
+              Looks up a localized string similar to A service command for special processing (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryMethodPartName">
+            <summary>
+              Looks up a localized string similar to Service Query Method.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryServicePartName">
+            <summary>
+              Looks up a localized string similar to Service Query Service.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.ServiceQueryTypeMethodNameDescription">
+            <summary>
+              Looks up a localized string similar to The service type name and service method name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WcfServiceQueryCustomCommandPartName">
+            <summary>
+              Looks up a localized string similar to Wcf Service Query Custom Command Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WcfServiceQueryEndpointDescription">
+            <summary>
+              Looks up a localized string similar to Service endpoint name, use this to set the transport type..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WcfServiceQueryEndpointPartName">
+            <summary>
+              Looks up a localized string similar to Wcf Service Query Endpoint.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WcfServiceQueryUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a WCF Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WcfServiceQueryUICommandText">
+            <summary>
+              Looks up a localized string similar to WCF Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WebServiceQueryCustomCommandPartName">
+            <summary>
+              Looks up a localized string similar to Web Service Query Custom Command Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WebServiceQueryUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add a Web Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.WebServiceQueryUICommandText">
+            <summary>
+              Looks up a localized string similar to Web Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlFileQueryCustomCommandPartName">
+            <summary>
+              Looks up a localized string similar to Xml File Query Custom Command Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlFileQueryElementDescription">
+            <summary>
+              Looks up a localized string similar to The element that defines a data object in the xml data file (OPTIONAL if using a custom command).
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlFileQueryElementPartName">
+            <summary>
+              Looks up a localized string similar to Xml File Query Element.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlFileQueryUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add an Xml File Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlFileQueryUICommandText">
+            <summary>
+              Looks up a localized string similar to Xml File Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlParameterDataNamespacePartName">
+            <summary>
+              Looks up a localized string similar to Xml Parameter Namespace.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlParameterNamespaceDescription">
+            <summary>
+              Looks up a localized string similar to The xml namespace for the parameter (OPTIONAL)..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlParameterUICommandLongText">
+            <summary>
+              Looks up a localized string similar to Add an Xml Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Properties.InternalResources.XmlParameterUICommandText">
+            <summary>
+              Looks up a localized string similar to Xml Parameter.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.CustomParameterData">
+            <summary>
+            Configuration object for Custom Providers.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.ParameterData">
+            <summary>
+            Configuration data defining ParameterData. This configuration section defines the name and type
+            of the IParameter class
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="type">The <see cref="P:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.NameTypeConfigurationElement.Type"/> that this element is the configuration for.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterData.GetRegistrations(System.String)">
+            <summary>
+            Returns the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for the data provider.
+            </summary>
+            <remarks>
+            The method at the <see cref="T:EntLibContrib.Query.Configuration.ParameterData"/> should not be called directly and is expected to
+            be implemented by inheritors.  Since the <see cref="T:EntLibContrib.Query.Configuration.ParameterData"/> requires a default constructor for 
+            serialization purposes, the class could not be made abstract.
+            </remarks>
+            <param name="name">The name to use when building references to child elements.</param>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for the data provider</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.#ctor">
+            <summary>
+            Initializes with default values.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CustomParameterData"/> class.
+            </summary>
+            <param name="name">The provider name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes with name and provider type.
+            </summary>
+            <param name="name">The provider name.</param>
+            <param name="type">The provider type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.#ctor(System.String,System.String)">
+            <summary>
+            Initializes with name and provider type name.
+            </summary>
+            <param name="name">The provider name.</param>
+            <param name="typeName">Name of the provider type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.SetAttributeValue(System.String,System.String)">
+            <summary>
+            Sets the attribute value for a key.
+            </summary>
+            <param name="key">The attribute name.</param>
+            <param name="value">The attribute value.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.GetRegistrations(System.String)">
+            <summary>
+            Retrieves the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for the custom provider.
+            </summary>
+            <param name="name">The child prefix to use when reference child elements</param>
+            <returns>The type registration for the custom provider</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Unmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>
+            Modifies the <see cref="T:EntLibContrib.Query.Configuration.CustomParameterData"/> object to remove all values that should not be saved.
+            </summary>
+            <param name="sourceElement">A <see cref="T:System.Configuration.ConfigurationElement"/> object at the current level containing a merged view of the properties.</param>
+            <param name="parentElement">A parent <see cref="T:System.Configuration.ConfigurationElement"/> object or <see langword="null"/> if this is the top level.</param>
+            <param name="saveMode">One of the <see cref="T:System.Configuration.ConfigurationSaveMode"/> values.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Reset(System.Configuration.ConfigurationElement)">
+            <summary>
+            Resets the internal state of the <see cref="T:EntLibContrib.Query.Configuration.CustomParameterData"/> object,
+            including the locks and the properties collection.
+            </summary>
+            <param name="parentElement">The parent element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.IsModified">
+            <summary>
+            Indicates whether this configuration element has been modified since it was last
+            saved or loaded when implemented in a derived class.
+            </summary>
+            <returns>
+            	<see langword="true"/> if the element has been modified; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.OnDeserializeUnrecognizedAttribute(System.String,System.String)">
+            <summary>
+            Called when an unknown attribute is encountered while deserializing the <see cref="T:EntLibContrib.Query.Configuration.CustomParameterData"/> object.
+            </summary>
+            <param name="name">The name of the unrecognized attribute.</param>
+            <param name="value">The value of the unrecognized attribute.</param>
+            <returns>
+            	<see langword="true"/> if the processing of the element should continue; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#BaseGetPropertyValue(System.Configuration.ConfigurationProperty)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="property">The property to get the value from.</param>
+            <returns>The value for the property.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#BaseSetPropertyValue(System.Configuration.ConfigurationProperty,System.Object)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="property">The property to set the value to.</param>
+            <param name="value">The new value for the property.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#BaseUnmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="sourceElement">A <see cref="T:System.Configuration.ConfigurationElement"/> object at the current level containing a merged view of the properties.</param>
+            <param name="parentElement">The parent <b>ConfigurationElement</b> object, or a null reference (Nothing in Visual Basic) if this is the top level.</param>
+            <param name="saveMode">A <see cref="T:System.Configuration.ConfigurationSaveMode"/> object that determines which property values to include.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#BaseReset(System.Configuration.ConfigurationElement)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="parentElement">The parent node of the configuration element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#BaseIsModified">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <returns>
+            	<b>true</b> if the configuration element has been modified, <b>false</b> otherwise.
+            </returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomParameterData.Attributes">
+            <summary>
+            Gets or sets custom configuration attributes.
+            </summary>
+            <value>Collection of attribute names and values</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomParameterData.Properties">
+            <summary>
+            Gets a <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for
+            this configuration element when implemented in a derived class.
+            </summary>
+            <value>
+            A <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for this
+            configuration element when implemented in a derived class.
+            </value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomParameterData.TypeName">
+            <summary>
+            Overridden in order to apply <see cref="T:System.ComponentModel.BrowsableAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomParameterData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomParameterData}#Helper">
+            <summary>
+            Gets the helper.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:EntLibContrib.Query.ParameterSet">
+            <summary>
+            Parameter Set.
+            </summary>
+            <remarks>
+            This provider handles the parameters
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.IParameterSet">
+            <summary>
+            This interface defines the contract that must be implemented by all parameter sets. 
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.IParameterSet.Parameters">
+            <summary>
+            Gets the query parameters.
+            </summary>
+            <value>A dictionary of parameter instances.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.ParameterSet.#ctor">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.ParameterSet"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.ParameterSet.#ctor(System.Collections.Generic.IEnumerable{EntLibContrib.Query.IParameter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.ParameterSet"/> class.
+            </summary>
+            <param name="parameters">The query parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.ParameterSet.#ctor(EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.ParameterSet"/> class.
+            </summary>
+            <param name="parameters">The query parameters.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.ParameterSet.Parameters">
+            <summary>
+            Gets the query parameters.
+            </summary>
+            <value>A dictionary of parameter instances.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.NameValueParameterData">
+            <summary>
+            Configuration data defining NameValueParameterData.
+            </summary>    
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.NameValueParameterData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.NameValueParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.NameValueParameterData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.NameValueParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.NameValueParameterData.GetRegistrations(System.String)">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.NameValueParameterData"/>.
+            </summary>
+            <param name="name">The name to use for the child elements.</param>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.NameValueParameterData"/> in the container.</returns>
+        </member>
+        <member name="T:EntLibContrib.Query.QueryConfigurationView">
+            <summary>
+            Represents a view to navigate the <see cref="P:EntLibContrib.Query.QueryConfigurationView.QuerySettings"/> configuration data.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.QueryConfigurationView.#ctor(Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.QueryConfigurationView"/> with an <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource"/>.
+            </summary>
+            <param name="configurationSource">An <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource"/> object.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.QueryConfigurationView.GetQueryData(System.String)">
+            <summary>
+            Gets the <see cref="T:EntLibContrib.Query.Configuration.QueryDataBase"/> from configuration for the named <see cref="T:EntLibContrib.Query.IQuery"/>
+            </summary>
+            <param name="queryName">The name of the <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <returns>
+            A <see cref="T:EntLibContrib.Query.Configuration.QueryDataBase"/> object.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.QueryConfigurationView.GetParameterSetData(System.String)">
+            <summary>
+            Gets the <see cref="T:EntLibContrib.Query.Configuration.ParameterSetData"/> from configuration for the named <see cref="T:EntLibContrib.Query.IParameterSet"/>
+            </summary>
+            <param name="parameterSetName">The name of the <see cref="T:EntLibContrib.Query.IParameterSet"/>.</param>
+            <returns>
+            A <see cref="T:EntLibContrib.Query.Configuration.ParameterSetData"/> object.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.QueryConfigurationView.GetCommandData(System.String)">
+            <summary>
+            Gets the <see cref="T:EntLibContrib.Query.Configuration.CommandData"/> from configuration for the named <see cref="T:EntLibContrib.Query.ICommand"/>
+            </summary>
+            <param name="customCommandName">Name of the custom command.</param>
+            <returns>
+            A <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> object.
+            </returns>
+        </member>
+        <member name="P:EntLibContrib.Query.QueryConfigurationView.QuerySettings">
+            <summary>
+            Gets the <see cref="P:EntLibContrib.Query.QueryConfigurationView.QuerySettings"/> configuration data.
+            </summary>
+            <returns>
+            The <see cref="P:EntLibContrib.Query.QueryConfigurationView.QuerySettings"/> configuration data.
+            </returns>
+        </member>
+        <member name="T:EntLibContrib.Query.Parameters.NameValueParameter">
+            <summary>
+            Parameter to hold the name and value elements of a single name and value query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Parameters.NameValueParameter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Parameters.NameValueParameter"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.WebServiceQuery">
+            <summary>
+            Web Service Query.
+            </summary>
+            <remarks>
+            This provider creates a query for a Web Service.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.ServiceQuery">
+            <summary>
+            Abstract Service based Query.
+            </summary>
+            <remarks>
+            This provider is the base for all service-based queries.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.QueryBase">
+            <summary>
+            Abstract Query.
+            </summary>
+            <remarks>
+            This provider is the base for all queries
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.IQuery">
+            <summary>
+            This interface defines the contract that must be implemented by all queries. 
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.IQuery.ExecuteForRead">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>this method requires the parameter values to be set through the properties.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.IQuery.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.IQuery.ExecuteForWrite">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <remarks>
+            	<para>this method requires the parameter values to be set through the properties.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.IQuery.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.IQuery.ExecuteForWrite(System.Data.DataSet)">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values as a DataSet.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dataset.</para>
+            	<para>The dataset column names must match the parameter names.</para>
+            	<para>Multiple rows in the dataset will result in multiple writes to the data source.</para>
+            	<para>Output parameters will update the parameter property values but this only makes sense for single row datasets.</para>
+            </remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.IQuery.Name">
+            <summary>
+            Gets the query name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.IQuery.CustomCommand">
+            <summary>
+            Gets the custom command.
+            </summary>
+            <value>The custom command.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.IQuery.ParameterSet">
+            <summary>
+            Gets the query parameter set.
+            </summary>
+            <value>A set of parameters.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.#ctor(System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.QueryBase"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.ExecuteForRead">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>this method requires the parameter values to be set through the properties.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.ExecuteForWrite">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <remarks>
+            	<para>this method requires the parameter values to be set through the properties.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.ExecuteForWrite(System.Data.DataSet)">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values as a DataSet.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dataset.</para>
+            	<para>The dataset column names must match the parameter names.</para>
+            	<para>Only the first Table in the dataset is considered.</para>
+            	<para>Multiple rows in the dataset will result in multiple writes to the data source.</para>
+            	<para>Output parameters will update the parameter property values but this only makes sense for single row datasets.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.SetParameterValues(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Sets the parameter values from a given dictionary of parameter values.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>the dictionary keys must match the parameter names</remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.UpdateReadCounters(System.Data.DataSet)">
+            <summary>
+            Updates the read counters.
+            </summary>
+            <param name="readSet">The read set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.UpdateWriteCounters">
+            <summary>
+            Updates the write counters.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.LogReadError(System.Exception)">
+            <summary>
+            Log a read error.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.LogWriteError(System.Exception)">
+            <summary>
+            Log a write error.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.QueryBase.BuildCommand">
+            <summary>
+            Builds the query command.
+            </summary>
+            <returns>An <see cref="T:EntLibContrib.Query.ICommand"/> object</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.QueryBase.Name">
+            <summary>
+            Gets the query name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.QueryBase.QueryType">
+            <summary>
+            Gets the type of the query.
+            </summary>
+            <value>The type of the query.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.QueryBase.CustomCommand">
+            <summary>
+            Gets the custom command.
+            </summary>
+            <value>The custom command.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.QueryBase.ParameterSet">
+            <summary>
+            Gets the query parameter set.
+            </summary>
+            <value>A set of parameters.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.ServiceQuery.#ctor(System.String,System.String,System.String,System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.ServiceQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.ServiceQuery.ValidateAndStoreParameters(System.String,System.String,System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="addressName">Name of the address.</param>
+            <param name="serviceName">Name of the service.</param>
+            <param name="methodName">Name of the method.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.ServiceQuery.QueryType">
+            <summary>
+            Gets the type of the query.
+            </summary>
+            <value>The type of the query.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.ServiceQuery.Address">
+            <summary>
+            Gets or sets the address.
+            </summary>
+            <value>The address.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.ServiceQuery.Service">
+            <summary>
+            Gets or sets the service.
+            </summary>
+            <value>The service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.ServiceQuery.Method">
+            <summary>
+            Gets or sets the method.
+            </summary>
+            <value>The method.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WebServiceQuery.#ctor(System.String,System.String,System.String,System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.WebServiceQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WebServiceQuery.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WebServiceQuery.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WebServiceQuery.BuildCommand">
+            <summary>
+            Builds the command to be invoked.
+            </summary>
+            <returns>An <see cref="T:EntLibContrib.Query.ICommand"/> object</returns>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.WebServiceQueryData">
+            <summary>
+            Configuration data defining WebServiceQueryData.
+            </summary>    
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.ServiceQueryData">
+            <summary>
+            Configuration data defining ServiceQueryData.
+            This configuration section adds the service name and address
+            </summary>    
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.QueryData">
+            <summary>
+            Configuration data defining QueryData. Defines the information needed to properly configure
+            a Query instance
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.QueryDataBase">
+            <summary>
+            Configuration data defining QueryDataBase. This configuration section defines the name and type
+            of the IQuery class
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryDataBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.QueryDataBase"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryDataBase.#ctor(System.String,System.Type)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.QueryDataBase"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IQuery"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryDataBase.GetRegistrations">
+            <summary>
+            Get the set of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> object needed to
+            register the Query represented by this config element.
+            </summary>
+            <returns>The sequence of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> objects.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryDataBase.GetQueryCreationExpression">
+            <summary>
+            Gets the creation expression used to produce a <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> during
+            <see cref="M:EntLibContrib.Query.Configuration.QueryDataBase.GetRegistrations"/>.
+            </summary>
+            <remarks>
+            This must be overridden by a subclass, but is not marked as abstract due to configuration serialization needs.
+            </remarks>
+            <returns>A <see cref="T:System.Linq.Expressions.Expression"/> that creates a <see cref="T:EntLibContrib.Query.IQuery"/></returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.QueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryData.#ctor(System.String,System.Type)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.QueryData"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IQuery"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QueryData.#ctor(System.String,System.Type,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.QueryData"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IQuery"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.QueryData.CustomCommandName">
+            <summary>
+            Gets or sets the command name.
+            </summary>
+            <value>The command name.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.QueryData.ParameterSetName">
+            <summary>
+            Gets or sets the parameter set name.
+            </summary>
+            <value>The parameter set name.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ServiceQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ServiceQueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ServiceQueryData.#ctor(System.String,System.Type)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ServiceQueryData"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IQuery"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ServiceQueryData.#ctor(System.String,System.Type,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ServiceQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.ServiceQueryData"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.ServiceQueryData.Address">
+            <summary>
+            Address of the service to use.
+            </summary>
+            <value>The address of the service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.ServiceQueryData.Service">
+            <summary>
+            Name of the service to use.
+            </summary>
+            <value>The name of the service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.ServiceQueryData.Method">
+            <summary>
+            Name of the method to use.
+            </summary>
+            <value>The name of the method.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.WebServiceQueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceQueryData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.WebServiceQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.WebServiceQueryData"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceQueryData.GetQueryCreationExpression">
+            <summary>
+            Returns the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> entry for the current concrete type represented by this 
+            configuration object.
+            </summary>
+            <returns>A registry entry.</returns>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.XmlFileQuery">
+            <summary>
+            Xml Query.
+            </summary>
+            <remarks>
+            This provider creates a query for an Xml file.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.FileQuery">
+            <summary>
+            Abstract File based Query.
+            </summary>
+            <remarks>
+            This provider is the base for all file-based queries
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.FileQuery.#ctor(System.String,System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.FileQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="dataFile">The data file.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.FileQuery.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="filename">The filename.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.FileQuery.QueryType">
+            <summary>
+            Gets the type of the query.
+            </summary>
+            <value>The type of the query.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Queries.FileQuery.DataFile">
+            <summary>
+            Gets or sets the data file.
+            </summary>
+            <value>The data file.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.XmlFileQuery.#ctor(System.String,System.String,System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.XmlFileQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="element">The XML element that contains the object data.</param>
+            <param name="dataFile">The XML data file.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.XmlFileQuery.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.XmlFileQuery.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.XmlFileQuery.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="elementName">Name of the element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.XmlFileQuery.BuildCommand">
+            <summary>
+            Builds the command for the specified database to use.
+            </summary>
+            <returns>The built command</returns>
+            <remarks>The parameter dictionary can contain any parameter type
+            unless you need a namespace in which you must use <see cref="T:EntLibContrib.Query.Parameters.XmlParameter"/> types</remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.WcfServiceCommand">
+            <summary>
+            Simple class to hold the components of a WCF service command
+            </summary>
+            <remarks>
+            Even if the service itself is an older web service, rather than a WCF service,
+            the client proxy may still be generated as a Wcf service in which case you need to
+            use this command.
+            </remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.ServiceCommand">
+            <summary>
+            Simple abstract class to hold the components of a service command
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.Command">
+            <summary>
+            Simple abstract class to hold the components of a command
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.Command.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.Command"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.Command.#ctor(EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.ServiceCommand"/> class.
+            </summary>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.Command.ExecuteForRead">
+            <summary>
+            Executes a read action.
+            </summary>
+            <returns>
+            a DataSet containing the results of the read action
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.Command.ExecuteForWrite">
+            <summary>
+            Executes a write action.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.Command.AddParameters(EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Adds the parameters.
+            </summary>
+            <param name="newParameters">The new parameters.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.Command.Parameters">
+            <summary>
+            Gets the query parameters.
+            </summary>
+            <value>A dictionary of parameters.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.ServiceCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.#ctor(System.String,System.String,System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.ServiceCommand"/> class.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.#ctor(System.String,System.String,System.String,System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.ServiceCommand"/> class.
+            </summary>
+            <param name="endpoint">The endpoint.</param>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.ExecuteForRead">
+            <summary>
+            Executes a read action.
+            </summary>
+            <returns>
+            a DataSet containing the results of the read action
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.ExecuteForWrite">
+            <summary>
+            Executes a write action.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.ValidateAndStoreParameters(System.String,System.String,System.String,System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="endpointName">Name of the endpoint.</param>
+            <param name="addressName">Name of the address.</param>
+            <param name="serviceName">Name of the service.</param>
+            <param name="methodName">Name of the method.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.ServiceCommand.ConvertParameters">
+            <summary>
+            Converts the parameters from a <see cref="T:EntLibContrib.Query.ParameterDictionary"/> to an <see cref="T:System.Object"/> array.
+            </summary>
+            <returns>
+            A <see cref="T:System.Object"/> array built from the parameter dictionary
+            </returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.Endpoint">
+            <summary>
+            Gets the service endpoint.
+            </summary>
+            <value>The service endpoint.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.Address">
+            <summary>
+            Gets the service address.
+            </summary>
+            <value>The service address.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.Service">
+            <summary>
+            Gets or sets the service.
+            </summary>
+            <value>The service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.Method">
+            <summary>
+            Gets or sets the method.
+            </summary>
+            <value>The method.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.ServiceObject">
+            <summary>
+            Gets an instance of the service object.
+            </summary>
+            <value>The service object.</value>
+            <remarks>override this property if your service constructor takes parameters</remarks>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.MethodInfo">
+            <summary>
+            Gets the reflected method information.
+            </summary>
+            <value>The method information.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.ServiceCommand.IsServiceObjectSet">
+            <summary>
+            Determines whether the service object is set.
+            </summary>
+            <value>
+            	<c>true</c> if the service object is set; otherwise, <c>false</c>.
+            </value>
+            <returns>
+            	<c>true</c> if the service object is set; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WcfServiceCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WcfServiceCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WcfServiceCommand.#ctor(System.String,System.String,System.String,System.String,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WcfServiceCommand"/> class.
+            </summary>
+            <param name="endpoint">The end point.</param>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WcfServiceCommand.#ctor(System.String,System.String,System.String,System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WcfServiceCommand"/> class.
+            </summary>
+            <param name="endpoint">The end point.</param>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.CustomQueryData">
+            <summary>
+            Configuration object for Custom Providers.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.#ctor">
+            <summary>
+            Initializes with default values.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CustomQueryData"/> class.
+            </summary>
+            <param name="name">The provider name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes with name and provider type.
+            </summary>
+            <param name="name">The provider name.</param>
+            <param name="type">The provider type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.#ctor(System.String,System.String)">
+            <summary>
+            Initializes with name and provider type name.
+            </summary>
+            <param name="name">The provider name.</param>
+            <param name="typeName">Name of the provider type.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.SetAttributeValue(System.String,System.String)">
+            <summary>
+            Sets the attribute value for a key.
+            </summary>
+            <param name="key">The attribute name.</param>
+            <param name="value">The attribute value.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Unmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>
+            Modifies the <see cref="T:EntLibContrib.Query.Configuration.CustomQueryData"/> object to remove all values that should not be saved.
+            </summary>
+            <param name="sourceElement">A <see cref="T:System.Configuration.ConfigurationElement"/> object at the current level containing a merged view of the properties.</param>
+            <param name="parentElement">A parent <see cref="T:System.Configuration.ConfigurationElement"/> object or <see langword="null"/> if this is the top level.</param>
+            <param name="saveMode">One of the <see cref="T:System.Configuration.ConfigurationSaveMode"/> values.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Reset(System.Configuration.ConfigurationElement)">
+            <summary>
+            Resets the internal state of the <see cref="T:EntLibContrib.Query.Configuration.CustomQueryData"/> object,
+            including the locks and the properties collection.
+            </summary>
+            <param name="parentElement">The parent element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.IsModified">
+            <summary>
+            Indicates whether this configuration element has been modified since it was last
+            saved or loaded when implemented in a derived class.
+            </summary>
+            <returns>
+            	<see langword="true"/> if the element has been modified; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.OnDeserializeUnrecognizedAttribute(System.String,System.String)">
+            <summary>
+            Called when an unknown attribute is encountered while deserializing the <see cref="T:EntLibContrib.Query.Configuration.CustomQueryData"/> object.
+            </summary>
+            <param name="name">The name of the unrecognized attribute.</param>
+            <param name="value">The value of the unrecognized attribute.</param>
+            <returns>
+            	<see langword="true"/> if the processing of the element should continue; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#BaseGetPropertyValue(System.Configuration.ConfigurationProperty)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="property">The property to get the value from.</param>
+            <returns>The value for the property.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#BaseSetPropertyValue(System.Configuration.ConfigurationProperty,System.Object)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="property">The property to set the value to.</param>
+            <param name="value">The new value for the property.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#BaseUnmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="sourceElement">A <see cref="T:System.Configuration.ConfigurationElement"/> object at the current level containing a merged view of the properties.</param>
+            <param name="parentElement">The parent <b>ConfigurationElement</b> object, or a null reference (Nothing in Visual Basic) if this is the top level.</param>
+            <param name="saveMode">A <see cref="T:System.Configuration.ConfigurationSaveMode"/> object that determines which property values to include.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#BaseReset(System.Configuration.ConfigurationElement)">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <param name="parentElement">The parent node of the configuration element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#BaseIsModified">
+            <summary>
+            Invokes the inherited behavior.
+            </summary>
+            <returns>
+            	<b>true</b> if the configuration element has been modified, <b>false</b> otherwise.
+            </returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomQueryData.Attributes">
+            <summary>
+            Gets or sets custom configuration attributes.
+            </summary>
+            <value>Collection of attribute names and values</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomQueryData.Properties">
+            <summary>
+            Gets a <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for
+            this configuration element when implemented in a derived class.
+            </summary>
+            <value>
+            A <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for this
+            configuration element when implemented in a derived class.
+            </value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomQueryData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomQueryData}#Helper">
+            <summary>
+            Gets the helper.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomQueryData.TypeName">
+            <summary>
+            Overridden in order to apply <see cref="T:System.ComponentModel.BrowsableAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.ParameterDictionary">
+            <summary>
+            A collection of parameter objects
+            </summary>
+            <remarks>This collection is used to build the set of parameters for a query</remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.ParameterDictionary.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.ParameterDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.ParameterDictionary.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.ParameterDictionary"/> class.
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> object containing the information required to serialize the <see cref="T:System.Collections.Generic.Dictionary`2"></see>.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.FileCommand">
+            <summary>
+            Simple abstract class to hold the components of a file command
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.FileCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.FileCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.FileCommand.#ctor(System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.FileCommand"/> class.
+            </summary>
+            <param name="dataFile">The data file.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.FileCommand.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="filename">The filename.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.FileCommand.DataFile">
+            <summary>
+            Gets the data file.
+            </summary>
+            <value>The data file.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.WcfServiceQueryData">
+            <summary>
+            Configuration data defining WcfServiceQueryData.
+            </summary>    
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WcfServiceQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.WcfServiceQueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WcfServiceQueryData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.WcfServiceQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.WcfServiceQueryData"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+            <param name="endpoint">The service end point.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WcfServiceQueryData.GetQueryCreationExpression">
+            <summary>
+            Returns the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> entry for the current concrete type represented by this 
+            configuration object.
+            </summary>
+            <returns>A registry entry.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WcfServiceQueryData.Endpoint">
+            <summary>
+            Name of the end point to use.
+            </summary>
+            <value>The name of the end point.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.XmlFileCommandData">
+            <summary>
+            <para>Configuration data for an <c>XmlFileCommandData</c>.</para>
+            </summary>	
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.CommandData">
+            <summary>
+            <para>Represents the common configuration data for all commands.</para>
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CommandData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CommandData.#ctor(System.Type)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CommandData"/> class with a name and a <see cref="T:EntLibContrib.Query.ICommand"/>.
+            </summary>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.ICommand"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CommandData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> class.
+            </summary>
+            <param name="name">The command name.</param>
+            <param name="type">The <see cref="P:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.NameTypeConfigurationElement.Type"/> that this element is the configuration for.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CommandData.GetRegistration">
+            <summary>
+            Creates a <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> instance describing the provider represented by 
+            this configuration object.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for the exception handler data</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CommandData.BuildName(System.String)">
+            <summary>
+            Builds a name with the supplied prefix. 
+            </summary>
+            <param name="prefix">Prefix to use when building a name</param>
+            <returns>A name as string</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CommandData.ParameterSetName">
+            <summary>
+            Gets or sets the parameter set name.
+            </summary>
+            <value>The parameter set name.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileCommandData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileCommandData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/> class.
+            </summary>
+            <param name="name">The provider name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileCommandData.GetRegistration">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/>.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.XmlFileCommandData.Name">
+            <summary>
+            Name of the data provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.XmlFileCommandData.Filename">
+            <summary>
+            Gets or sets the filename.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.XmlFileCommandData.Element">
+            <summary>
+            Gets or sets the element.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.XmlFileCommand">
+            <summary>
+            Simple abstract class to hold the components of an xml file command
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.XmlFileCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.#ctor(System.String,System.String,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.XmlFileCommand"/> class.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="dataFile">The data file.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.#ctor(System.String,System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.XmlFileCommand"/> class.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="dataFile">The data file.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.ExecuteForRead">
+            <summary>
+            Executes a read action.
+            </summary>
+            <returns>
+            a DataSet containing the results of the read action
+            </returns>
+            <remarks>searches can only be made on attributes of the given element type</remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.ExecuteForWrite">
+            <summary>
+            Executes a write action.
+            </summary>
+            <remarks>
+            	<para>Only values of child elements of the given element type can be updated.</para>
+            	<para>All searches are made based on the attribute values of the given element type.</para>
+            	<para>Only updates can be made, all create and delete operations must be done using a custom command.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.XmlFileCommand.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="elementName">Name of the element.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.XmlFileCommand.Element">
+            <summary>
+            Gets the element.
+            </summary>
+            <value>The element.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.XmlParameterData">
+            <summary>
+            Type to hold the elements of a single query parameter
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlParameterData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlParameterData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlParameterData.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlParameterData"/> class.
+            </summary>
+            <param name="name">The parameter name.</param>
+            <param name="namespaceName">Name of the namespace.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlParameterData.GetRegistrations(System.String)">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.XmlParameterData"/>.
+            </summary>
+            <param name="name">The name to use for the child elements.</param>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.XmlParameterData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.XmlParameterData.Namespace">
+            <summary>
+            Gets or sets the type of the parameter.
+            </summary>
+            <value>The type of the parameter.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.CustomCommandData">
+            <summary>
+            Configuration data defining CustomCommandData. This configuration section defines the name and type
+            of the ICustomCommand class
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.#ctor">
+            <summary>
+            Initializes with default values.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes with name and provider type.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.#ctor(System.String,System.String)">
+            <summary>
+            Initializes with name and fully qualified type name of the provider type.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#BaseGetPropertyValue(System.Configuration.ConfigurationProperty)">
+            <summary>Invokes the inherited behavior.</summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#BaseSetPropertyValue(System.Configuration.ConfigurationProperty,System.Object)">
+            <summary>Invokes the inherited behavior.</summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#BaseUnmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>Invokes the inherited behavior.</summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#BaseReset(System.Configuration.ConfigurationElement)">
+            <summary>Invokes the inherited behavior.</summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#BaseIsModified">
+            <summary>Invokes the inherited behavior.</summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.SetAttributeValue(System.String,System.String)">
+            <summary>
+            Sets the attribute value for a key.
+            </summary>
+            <param name="key">The attribute name.</param>
+            <param name="value">The attribute value.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Unmerge(System.Configuration.ConfigurationElement,System.Configuration.ConfigurationElement,System.Configuration.ConfigurationSaveMode)">
+            <summary>
+            Modifies the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> object to remove all values that should not be saved. 
+            </summary>
+            <param name="sourceElement">A <see cref="T:System.Configuration.ConfigurationElement"/> object at the current level containing a merged view of the properties.</param>
+            <param name="parentElement">A parent <see cref="T:System.Configuration.ConfigurationElement"/> object or <see langword="null"/> if this is the top level.</param>
+            <param name="saveMode">One of the <see cref="T:System.Configuration.ConfigurationSaveMode"/> values.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.Reset(System.Configuration.ConfigurationElement)">
+            <summary>
+            Resets the internal state of the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> object, 
+            including the locks and the properties collection.
+            </summary>
+            <param name="parentElement">The parent element.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.IsModified">
+            <summary>
+            Indicates whether this configuration element has been modified since it was last 
+            saved or loaded when implemented in a derived class.
+            </summary>
+            <returns><see langword="true"/> if the element has been modified; otherwise, <see langword="false"/>. </returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.OnDeserializeUnrecognizedAttribute(System.String,System.String)">
+            <summary>
+            Called when an unknown attribute is encountered while deserializing the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> object.
+            </summary>
+            <param name="name">The name of the unrecognized attribute.</param>
+            <param name="value">The value of the unrecognized attribute.</param>
+            <returns><see langword="true"/> if the processing of the element should continue; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.CustomCommandData.GetRegistration">
+            <summary>
+            Creates a <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> instance describing the provider represented by 
+            this configuration object.
+            </summary>
+            <returns>The type registration for the custom exception handler</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomCommandData.Name">
+            <summary>
+            Name of the data provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomCommandData.Properties">
+            <summary>
+            Gets a <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for 
+            this configuration element when implemented in a derived class. 
+            </summary>
+            <value>
+            A <see cref="T:System.Configuration.ConfigurationPropertyCollection"/> of the properties that are defined for this
+            configuration element when implemented in a derived class. 
+            </value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomCommandData.TypeName">
+            <summary>
+            Overridden in order to apply <see cref="T:System.ComponentModel.BrowsableAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomCommandData.Attributes">
+            <summary>
+            Gets or sets custom configuration attributes.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.CustomCommandData.Microsoft#Practices#EnterpriseLibrary#Common#Configuration#IHelperAssistedCustomConfigurationData{EntLibContrib#Query#Configuration#CustomCommandData}#Helper">
+            <summary>
+            Gets the helper.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.Design.ViewModel.AddQueryBlockCommand">
+            <summary>
+            This class supports block-specific configuration design-time and is not
+            intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Commands.WebServiceCommand">
+            <summary>
+            Simple class to hold the components of a reflected web service command
+            </summary>
+            <remarks>
+            This is only required for use with a legacy web service client proxy.
+            Even if the service itself is an older web service, rather than a WCF service,
+            the client proxy may still be generated as a Wcf service in which case you need to
+            use the WcfServiceQuery instead.
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WebServiceCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WebServiceCommand"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WebServiceCommand.#ctor(System.String,System.String,System.String,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WebServiceCommand"/> class.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Commands.WebServiceCommand.#ctor(System.String,System.String,System.String,EntLibContrib.Query.ParameterDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Commands.WebServiceCommand"/> class.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="service">The service.</param>
+            <param name="method">The method.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Commands.WebServiceCommand.ServiceObject">
+            <summary>
+            Gets an instance of the service object.
+            </summary>
+            <value>The service object.</value>
+            <remarks>override this property if your service constructor takes parameters</remarks>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.XmlFileQueryData">
+            <summary>
+            Configuration data defining XmlQueryData. This configuration section adds the element
+            </summary>    
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.FileQueryData">
+            <summary>
+            Configuration data defining FileQueryData.
+            This configuration section adds the data file
+            </summary>    
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.FileQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.FileQueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.FileQueryData.#ctor(System.String,System.Type)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.FileQueryData"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IQuery"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.FileQueryData.#ctor(System.String,System.Type,System.String,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.FileQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.FileQueryData"/>.</param>
+            <param name="type">The type of <see cref="T:EntLibContrib.Query.IQuery"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="dataFile">The data file.</param>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.FileQueryData.DataFile">
+            <summary>
+            Data file to use.
+            </summary>
+            <value>Data file.</value>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileQueryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlFileQueryData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileQueryData.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.XmlFileQueryData"/> class.
+            </summary>
+            <param name="name">The name of the <see cref="T:EntLibContrib.Query.Configuration.XmlFileQueryData"/>.</param>
+            <param name="customCommandName">Name of the custom command.</param>
+            <param name="parameterSetName">Name of the parameter set.</param>
+            <param name="dataFile">The data file.</param>
+            <param name="element">The element in the data file that holds a data object.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.XmlFileQueryData.GetQueryCreationExpression">
+            <summary>
+            Returns the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> entry for the current concrete type represented by this 
+            configuration object.
+            </summary>
+            <returns>A registry entry.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.XmlFileQueryData.Element">
+            <summary>
+            The xml element to use.
+            </summary>
+            <value>The xml element.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.QuerySettings">
+            <summary>
+            Overall configuration settings for Queries
+            </summary>    
+        </member>
+        <member name="F:EntLibContrib.Query.Configuration.QuerySettings.SectionName">
+            <summary>
+            Configuration key for query settings.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QuerySettings.GetRegistrations(Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+            <summary>
+            Creates the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> entries to use when configuring a container for the Query Block.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.QuerySettings.GetUpdatedRegistrations(Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+            <summary>
+            Return the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> objects needed to reconfigure
+            the container after a configuration source has changed.
+            </summary>
+            <remarks>If there are no reregistrations, return an empty sequence.</remarks>
+            <param name="configurationSource">The <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource"/> containing
+            the configuration information.</param>
+            <returns>The sequence of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> objects.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.QuerySettings.Queries">
+            <summary>
+            Gets the collection of defined <see cref="T:EntLibContrib.Query.IQuery"/> objects.
+            </summary>
+            <value>
+            The collection of defined <see cref="T:EntLibContrib.Query.IQuery"/> objects.
+            </value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.QuerySettings.ParameterSets">
+            <summary>
+            Gets the collection of defined <see cref="T:EntLibContrib.Query.IParameterSet"/> objects.
+            </summary>
+            <value>
+            The collection of defined <see cref="T:EntLibContrib.Query.IParameterSet"/> objects.
+            </value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.QuerySettings.Commands">
+            <summary>
+            Gets the collection of <see cref="T:EntLibContrib.Query.Configuration.CommandData"/> objects for commands.
+            </summary>
+            <value>
+            The collection of <see cref="T:EntLibContrib.Query.Configuration.CommandData"/> objects.
+            </value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.Design.ViewModel.AddParameterSetCommand">
+            <summary>
+            This class supports block-specific configuration design-time and is not
+            intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.DesignResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.AddQuerySettings">
+            <summary>
+              Looks up a localized string similar to Add Query Settings.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CommandsDescription">
+            <summary>
+              Looks up a localized string similar to Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CommandsDisplayName">
+            <summary>
+              Looks up a localized string similar to Commands.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandDataDescription">
+            <summary>
+              Looks up a localized string similar to Use a custom command implementation..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Custom Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandDataTypeNameDescription">
+            <summary>
+              Looks up a localized string similar to The fully qualified type name of the Custom Command..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandDataTypeNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandNameDescription">
+            <summary>
+              Looks up a localized string similar to A custom command to use when querying..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomCommandNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Custom Command Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomParameterDataDescription">
+            <summary>
+              Looks up a localized string similar to Use a custom parameter implementation..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomParameterDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Custom Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomParameterDataTypeNameDescription">
+            <summary>
+              Looks up a localized string similar to The fully qualified type name of the Parameter Command..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomParameterDataTypeNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomQueryDataDescription">
+            <summary>
+              Looks up a localized string similar to Use a custom query implementation..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomQueryDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Custom Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomQueryDataTypeNameDescription">
+            <summary>
+              Looks up a localized string similar to The fully qualified type name of the Custom Query..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.CustomQueryDataTypeNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.FileQueryDataDataFileDescription">
+            <summary>
+              Looks up a localized string similar to The filename of the file containing the data to query..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.FileQueryDataDataFileDisplayName">
+            <summary>
+              Looks up a localized string similar to Filename.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.NameValueParameterDataDescription">
+            <summary>
+              Looks up a localized string similar to This is the most simple and generic form of a parameter and simply offers an instantiable type from the abstract Parameter type holding a name and a value only..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.NameValueParameterDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Name Value Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParametersDescription">
+            <summary>
+              Looks up a localized string similar to A parameter to use when querying..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParametersDisplayName">
+            <summary>
+              Looks up a localized string similar to Parameters.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetDataDescription">
+            <summary>
+              Looks up a localized string similar to Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Parameter Set.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetNameDescription">
+            <summary>
+              Looks up a localized string similar to The parameter set defining which parameters to use when querying or executing a command..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetNameDisplayName">
+            <summary>
+              Looks up a localized string similar to Parameter Set Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetsDescription">
+            <summary>
+              Looks up a localized string similar to A parameter sets defines which parameters to use when querying..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ParameterSetsDisplayName">
+            <summary>
+              Looks up a localized string similar to Parameter Sets.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.QueriesDescription">
+            <summary>
+              Looks up a localized string similar to A query is the primary object within the Query Application Access Block. A query represents a request for data from a data store or a request to store data in a data store..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.QueriesDisplayName">
+            <summary>
+              Looks up a localized string similar to Queries.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.QuerySettingsDescription">
+            <summary>
+              Looks up a localized string similar to Configuration settings for the Query Application Block..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.QuerySettingsDisplayName">
+            <summary>
+              Looks up a localized string similar to Query Settings.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataAddressDescription">
+            <summary>
+              Looks up a localized string similar to The url of the service to query. If not specified, the default configured address will be used..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataAddressDisplayName">
+            <summary>
+              Looks up a localized string similar to Address.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataMethodDescription">
+            <summary>
+              Looks up a localized string similar to The name of the method to call..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataMethodDisplayName">
+            <summary>
+              Looks up a localized string similar to Method Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataServiceDescription">
+            <summary>
+              Looks up a localized string similar to The full type name of the service..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.ServiceQueryDataServiceDisplayName">
+            <summary>
+              Looks up a localized string similar to Service Type Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WcfServiceQueryDataDescription">
+            <summary>
+              Looks up a localized string similar to The WCF Service queries target WCF services and convert the calls to service operations with parameters being passed as the parameters to these service operation calls. Note: that the QAB provides configuration to support WCF endpoints that specify a service address, a service binding (transport protocol) and a context..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WcfServiceQueryDataDisplayName">
+            <summary>
+              Looks up a localized string similar to WCF Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WcfServiceQueryDataEndpointDescription">
+            <summary>
+              Looks up a localized string similar to The service endpoint name. Use this to specify the transport type..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WcfServiceQueryDataEndpointDisplayName">
+            <summary>
+              Looks up a localized string similar to Endpoint.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataAddressDescription">
+            <summary>
+              Looks up a localized string similar to The url of the service to query. If not specified, the default configured address will be used..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataAddressDisplayName">
+            <summary>
+              Looks up a localized string similar to Address.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataDescription">
+            <summary>
+              Looks up a localized string similar to The Web Service Command provides an Endpoint name, a Url Address, a Service name (Type) and a Method name..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Web Service Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataEndpointDescription">
+            <summary>
+              Looks up a localized string similar to The service endpoint name. Use this to specify the transport type..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataEndpointDisplayName">
+            <summary>
+              Looks up a localized string similar to Endpoint.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataMethodDescription">
+            <summary>
+              Looks up a localized string similar to The name of the method to call..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataMethodDisplayName">
+            <summary>
+              Looks up a localized string similar to Method Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataServiceDescription">
+            <summary>
+              Looks up a localized string similar to The full type name of the service..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceCommandDataServiceDisplayName">
+            <summary>
+              Looks up a localized string similar to Service Type Name.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceQueryDataDescription">
+            <summary>
+              Looks up a localized string similar to Web Service queries are provided as a legacy support option for those who have not converted over to WCF Services and target Web services converting to calls to web method calls with parameters being passed as the parameters to these web method calls..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.WebServiceQueryDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Web Service Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandDataDescription">
+            <summary>
+              Looks up a localized string similar to The File Commands provide custom commands for XML queries..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandDataDisplayName">
+            <summary>
+              Looks up a localized string similar to File Command.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandDataElementDescription">
+            <summary>
+              Looks up a localized string similar to The element that defines a data object in the xml data file..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandDataElementDisplayName">
+            <summary>
+              Looks up a localized string similar to Element.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandFilenameDescription">
+            <summary>
+              Looks up a localized string similar to The filename of the xml file containing the commands..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileCommandFilenameDisplayName">
+            <summary>
+              Looks up a localized string similar to Xml Filename.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileQueryDataDescription">
+            <summary>
+              Looks up a localized string similar to The XML file queries target XML files and convert to LINQ to XML queries with parameters being used in those LINQ to XML queries..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileQueryDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Xml File Query.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileQueryDataElementDescription">
+            <summary>
+              Looks up a localized string similar to The element that defines a data object in the xml data file. This property is optional if using a custom command..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlFileQueryDataElementDisplayName">
+            <summary>
+              Looks up a localized string similar to Element.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlParameterDataDescription">
+            <summary>
+              Looks up a localized string similar to There is nothing too special about XML parameters either in that we normally only need a name of an Attribute or Element and a value to search for or replace etc. However, in complex XML files that use namespaces then we also need a namespace to be able to uniquely find attributes and elements within our XML data file. So an XML Parameter simply adds a Namespace property to the existing Name and Value properties..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlParameterDataDisplayName">
+            <summary>
+              Looks up a localized string similar to Xml Parameter.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlParameterDataNamespaceDescription">
+            <summary>
+              Looks up a localized string similar to In complex XML files that use namespaces then we also need a namespace to be able to uniquely find attributes and elements within our XML data file..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.DesignResources.XmlParameterDataNamespaceDisplayName">
+            <summary>
+              Looks up a localized string similar to Namespace.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Queries.WcfServiceQuery">
+            <summary>
+            Wcf Service Query.
+            </summary>
+            <remarks>
+            This provider creates a query for a Wcf Service.
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WcfServiceQuery.#ctor(System.String,System.String,System.String,System.String,System.String,EntLibContrib.Query.ICommand,EntLibContrib.Query.IParameterSet)">
+            <summary>
+            Initializes a new default instance of the <see cref="T:EntLibContrib.Query.Queries.WcfServiceQuery"/> class.
+            </summary>
+            <param name="name">The query name.</param>
+            <param name="endpoint">The service end point.</param>
+            <param name="address">The service address.</param>
+            <param name="service">The service type name.</param>
+            <param name="method">The service method.</param>
+            <param name="customCommand">The custom command.</param>
+            <param name="parameterSet">The parameter set.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WcfServiceQuery.ExecuteForRead(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a read command and returns the results.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <returns>
+            Dataset containing the results of the read operation
+            </returns>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WcfServiceQuery.ExecuteForWrite(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a write command and saves data to the data source.
+            </summary>
+            <param name="parameterValues">The parameter values.</param>
+            <remarks>
+            	<para>This method takes the parameter values from the given dictionary.</para>
+            	<para>Output parameters will update the parameter property values.</para>
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WcfServiceQuery.ValidateAndStoreParameters(System.String)">
+            <summary>
+            Validates the and store parameters.
+            </summary>
+            <param name="endpointName">Name of the endpoint.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Queries.WcfServiceQuery.BuildCommand">
+            <summary>
+            Builds the command to be invoked.
+            </summary>
+            <returns>An <see cref="T:EntLibContrib.Query.ICommand"/> object</returns>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.Design.ViewModel.ParameterSetDataViewModel">
+            <summary>
+            This class supports block-specific configuration design-time and is not
+            intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.ParameterSetData">
+            <summary>
+            Configuration data defining <see cref="T:EntLibContrib.Query.Configuration.ParameterSetData"/>. This configuration section defines the name and type
+            of the <see cref="T:EntLibContrib.Query.IParameterSet"/> class
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterSetData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ParameterSetData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterSetData.#ctor(System.String)">
+            <summary>
+            Initialize a new instance of the <see cref="T:EntLibContrib.Query.Configuration.ParameterSetData"/> class with a name and the type of <see cref="T:EntLibContrib.Query.IParameterSet"/>.
+            </summary>
+            <param name="name">The name of the configured <see cref="T:EntLibContrib.Query.IParameterSet"/>.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterSetData.GetRegistrations">
+            <summary>
+            Get the set of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> objects needed to
+            register the Policy Injection settings represented by this config section.
+            </summary>
+            <returns>The set of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> objects.</returns>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.ParameterSetData.BuildName(System.String)">
+            <summary>
+            Builds a name with the supplied prefix. 
+            </summary>
+            <param name="suffix">Suffix to use when building a name</param>
+            <returns>A name as string</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.ParameterSetData.Parameters">
+            <summary>
+            Gets or sets the list of parameters associated with
+            the query.
+            </summary>
+            <value>A collection of <see cref="T:EntLibContrib.Query.Configuration.ParameterData"/>.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.WebServiceCommandData">
+            <summary>
+            Configuration data defining ServiceCustomCommandData.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceCommandData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.CustomCommandData"/> class.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceCommandData.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Query.Configuration.WebServiceCommandData"/> class.
+            </summary>
+            <param name="name">The provider name.</param>
+        </member>
+        <member name="M:EntLibContrib.Query.Configuration.WebServiceCommandData.GetRegistration">
+            <summary>
+            A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> container configuration model for <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/>.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> for registering a <see cref="T:EntLibContrib.Query.Configuration.XmlFileCommandData"/> in the container.</returns>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WebServiceCommandData.Name">
+            <summary>
+            Name of the data provider.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WebServiceCommandData.Endpoint">
+            <summary>
+            Name of the end point to use.
+            </summary>
+            <value>The name of the end point.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WebServiceCommandData.Address">
+            <summary>
+            Address of the service to use.
+            </summary>
+            <value>The address of the service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WebServiceCommandData.Service">
+            <summary>
+            Name of the service to use.
+            </summary>
+            <value>The name of the service.</value>
+        </member>
+        <member name="P:EntLibContrib.Query.Configuration.WebServiceCommandData.Method">
+            <summary>
+            Name of the method to use.
+            </summary>
+            <value>The name of the method.</value>
+        </member>
+        <member name="T:EntLibContrib.Query.Configuration.Design.ViewModel.QuerySettingsViewModel">
+            <summary>
+            This class supports block-specific configuration design-time and is not
+            intended to be used directly from your code.
+            </summary>
+        </member>
+    </members>
+</doc>
