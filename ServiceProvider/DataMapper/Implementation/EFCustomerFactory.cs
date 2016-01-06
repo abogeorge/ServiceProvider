@@ -18,5 +18,16 @@ namespace DataMapper.Implementation
                 context.SaveChanges();
             }
         }
+
+        public Customer GetCustomerByCNP(string cnp)
+        {
+            using (var context = new DataMapperContext())
+            {
+                var customerVar = (from customer in context.Customers
+                                   where customer.CNP.Equals(cnp)
+                                   select customer).FirstOrDefault();
+                return customerVar;
+            }
+        }
     }
 }

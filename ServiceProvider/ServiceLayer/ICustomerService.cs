@@ -10,5 +10,7 @@ namespace ServiceLayer
     public interface ICustomerService
     {
         bool AddCustomer(Customer customer);
+
+        Customer GetCustomerByCNP(String cnp);
     }
 }

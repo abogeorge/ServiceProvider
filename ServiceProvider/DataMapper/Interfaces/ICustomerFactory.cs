@@ -10,5 +10,7 @@ namespace DataMapper.Interfaces
     public interface ICustomerFactory
     {
         void AddCustomer(Customer customer);
+
+        Customer GetCustomerByCNP(String cnp);
     }
 }
