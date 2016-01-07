@@ -21,12 +21,110 @@ namespace ServiceLayer.ServicesImplementation
             //logger = ServiceProviderLogger.GetInstance();
         }
 
-        public Customer GetCustomerByCNP(string cnp)
+        public void DropCustomerByCNP(String cnp)
         {
+            if (cnp.Equals(""))
+            {
+                throw new ValidationException("CNP field is null!");
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.DropCustomerByCNP(cnp);
+        }
+
+        public Customer GetCustomerByCNP(String cnp)
+        {
+            if (cnp.Equals(""))
+            {
+                throw new ValidationException("CNP field is null!");
+            }
             return DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.GetCustomerByCNP(cnp);
         }
 
-        bool ICustomerService.AddCustomer(Customer customer)
+        public void UpdateLastName(String cnp, string lastName)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if(customer == null)
+            {
+                throw new EntityDoesNotExistException("The customer with CNP " + cnp + " does not exist.");
+            }
+            customer.LastName = lastName;
+            var validationResult = Validation.Validate<Customer>(customer);
+            if (!validationResult.IsValid || !customer.ValidateCNP())
+            {
+                String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.UpdateLastName(customer);
+        }
+
+        public void UpdateFirstName(String cnp, string firstName)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if (customer == null)
+            {
+                throw new EntityDoesNotExistException("The customer with CNP " + cnp + " does not exist.");
+            }
+            customer.FirstName = firstName;
+            var validationResult = Validation.Validate<Customer>(customer);
+            if (!validationResult.IsValid || !customer.ValidateCNP())
+            {
+                String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.UpdateFirstName(customer);
+        }
+
+        public void UpdateAdress(String cnp, string adress)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if (customer == null)
+            {
+                throw new EntityDoesNotExistException("The customer with CNP " + cnp + " does not exist.");
+            }
+            customer.Adress = adress;
+            var validationResult = Validation.Validate<Customer>(customer);
+            if (!validationResult.IsValid || !customer.ValidateCNP())
+            {
+                String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.UpdateAdress(customer);
+        }
+
+        public void UpdateEmail(String cnp, string email)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if (customer == null)
+            {
+                throw new EntityDoesNotExistException("The customer with CNP " + cnp + " does not exist.");
+            }
+            customer.Email = email;
+            var validationResult = Validation.Validate<Customer>(customer);
+            if (!validationResult.IsValid || !customer.ValidateCNP())
+            {
+                String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.UpdateEmail(customer);
+        }
+
+        public void UpdatePhone(String cnp, string phone)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if (customer == null)
+            {
+                throw new EntityDoesNotExistException("The customer with CNP " + cnp + " does not exist.");
+            }
+            customer.Phone = phone;
+            var validationResult = Validation.Validate<Customer>(customer);
+            if (!validationResult.IsValid || !customer.ValidateCNP())
+            {
+                String message = "Invalid fields for customer " + customer.FirstName + " " + customer.LastName;
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.UpdatePhone(customer);
+        }
+
+        void ICustomerService.AddCustomer(Customer customer)
         {
            // logger.logInfo("Attempting to add a new customer ... ");
 
@@ -45,7 +143,6 @@ namespace ServiceLayer.ServicesImplementation
 
             DataMapperFactoryMethod.GetCurrentFactory().CustomerFactory.AddCustomer(customer);
             //logger.logInfo("Customer " + customer.FirstName + " " + customer.LastName + " was added!");
-            return true;
         }
     }
 }

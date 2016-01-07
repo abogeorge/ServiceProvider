@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DomainModel;
+using DataMapper.Exceptions;
 
 namespace DataMapper.Implementation
 {
@@ -19,6 +20,23 @@ namespace DataMapper.Implementation
             }
         }
 
+        public void DropCustomerByCNP(string cnp)
+        {
+            Customer customer = GetCustomerByCNP(cnp);
+            if(customer == null)
+            {
+                throw new EntityDoesNotExistException("Invalid CNP.");
+            }
+            
+            using (var context = new DataMapperContext())
+            {
+                context.Customers.Attach(customer);
+                context.Customers.Remove(customer);
+                context.SaveChanges();
+            }
+
+        }
+
         public Customer GetCustomerByCNP(string cnp)
         {
             using (var context = new DataMapperContext())
@@ -29,5 +47,61 @@ namespace DataMapper.Implementation
                 return customerVar;
             }
         }
+
+        public void UpdateLastName(Customer customer)
+        {
+                using (var context = new DataMapperContext())
+                {
+                    context.Customers.Attach(customer);
+                    var entry = context.Entry(customer);
+                    entry.Property(u => u.LastName).IsModified = true;
+                    context.SaveChanges();
+                }
+        }
+
+        public void UpdateFirstName(Customer customer)
+        {
+            using (var context = new DataMapperContext())
+            {
+                context.Customers.Attach(customer);
+                var entry = context.Entry(customer);
+                entry.Property(u => u.FirstName).IsModified = true;
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateAdress(Customer customer)
+        {
+            using (var context = new DataMapperContext())
+            {
+                context.Customers.Attach(customer);
+                var entry = context.Entry(customer);
+                entry.Property(u => u.Adress).IsModified = true;
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateEmail(Customer customer)
+        {
+            using (var context = new DataMapperContext())
+            {
+                context.Customers.Attach(customer);
+                var entry = context.Entry(customer);
+                entry.Property(u => u.Email).IsModified = true;
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdatePhone(Customer customer)
+        {
+            using (var context = new DataMapperContext())
+            {
+                context.Customers.Attach(customer);
+                var entry = context.Entry(customer);
+                entry.Property(u => u.Phone).IsModified = true;
+                context.SaveChanges();
+            }
+        }
+
     }
 }

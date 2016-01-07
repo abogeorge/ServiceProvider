@@ -248,5 +248,214 @@ namespace ServiceProviderUnitTests
                 Phone = "0749782465"
             });
         }
+
+        // Check CNP unicity
+        [TestMethod]
+        [ExpectedException(typeof(DuplicateException))]
+        public void TestAddCustomerWithDuplicateCNP()
+        {
+            customerService.AddCustomer(new Customer
+            {
+                FirstName = "George",
+                LastName = "Abordioaie",
+                Adress = "2 Codlea",
+                CNP = "1920417081662",
+                Email = "george@yahoo.com",
+                Phone = "0749782465"
+            });
+        }
+
+        // Retrieve customer by cnp
+        [TestMethod]
+        public void TestGetUserByCNP()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.IsNotNull(customer);
+        }
+
+        // Retrieve customer with empty cnp
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestGetUserByCNPEmptyString()
+        {
+            String cnp = "";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+        }
+
+        // Retrieve customer with inexistent cnp
+        [TestMethod]
+        public void TestGetUserByWrongCNP()
+        {
+            String cnp = "1234567890123";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.IsNull(customer);
+        }
+
+        // Update last name to valid customer
+        [TestMethod]
+        public void TestUpdateLastName()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.LastName, "Abordioaie");
+            customerService.UpdateLastName(cnp, "Popescu");
+            Customer customerUpdated = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customerUpdated.LastName, "Popescu");
+        }
+
+        // Update last name invalid last name
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateInvalidLastName()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.LastName, "Popescu");
+            customerService.UpdateLastName(cnp, "P");
+        }
+
+        // Update last name invalid cnp
+        [TestMethod]
+        [ExpectedException(typeof(EntityDoesNotExistException))]
+        public void TestUpdateLastNameInvalidCNP()
+        {
+            String cnp = "1234567890123";
+            customerService.UpdateLastName(cnp, "Popel");
+        }
+
+        // Update first name to valid customer
+        [TestMethod]
+        public void TestUpdateFirstName()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.FirstName, "George");
+            customerService.UpdateFirstName(cnp, "Alexandru");
+            Customer customerUpdated = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customerUpdated.FirstName, "Alexandru");
+        }
+
+        // Update last name invalid first name
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateInvalidFirstName()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.FirstName, "Alexandru");
+            customerService.UpdateFirstName(cnp, "A");
+        }
+
+        // Update first name invalid cnp
+        [TestMethod]
+        [ExpectedException(typeof(EntityDoesNotExistException))]
+        public void TestUpdateFirstNameInvalidCNP()
+        {
+            String cnp = "1234567890123";
+            customerService.UpdateFirstName(cnp, "Aa");
+        }
+
+        // Update adress to valid customer
+        [TestMethod]
+        public void TestUpdateAdress()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Adress, "2 Codlea");
+            customerService.UpdateAdress(cnp, "3 Brasov");
+            Customer customerUpdated = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customerUpdated.Adress, "3 Brasov");
+        }
+
+        // Update invalid adress
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateInvalidAdress()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Adress, "3 Brasov");
+            customerService.UpdateAdress(cnp, "ABC");
+        }
+
+        // Update email to valid customer
+        [TestMethod]
+        public void TestUpdateEmail()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Email, "george@yahoo.com");
+            customerService.UpdateEmail(cnp, "alexandru@yahoo.com");
+            Customer customerUpdated = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customerUpdated.Email, "alexandru@yahoo.com");
+        }
+
+        // Update invalid email
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateInvalidEmail()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Email, "alexandru@yahoo.com");
+            customerService.UpdateEmail(cnp, "george@");
+        }
+
+        // Update phone to valid customer
+        [TestMethod]
+        public void TestUpdatePhone()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Phone, "0749782465");
+            customerService.UpdatePhone(cnp, "0268.455.455");
+            Customer customerUpdated = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customerUpdated.Phone, "0268.455.455");
+        }
+
+        // Update invalid phone
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateInvalidPhone()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.AreEqual(customer.Phone, "0268.455.455");
+            customerService.UpdatePhone(cnp, "0777");
+        }
+
+        // -------------- DROPS
+
+        // Drop Customer
+        [TestMethod]
+        public void TestDropCustomer()
+        {
+            String cnp = "1920417081662";
+            Customer customer = customerService.GetCustomerByCNP(cnp);
+            Assert.IsNotNull(customer);
+            customerService.DropCustomerByCNP(cnp);
+            Customer customerRemoved = customerService.GetCustomerByCNP(cnp);
+            Assert.IsNull(customerRemoved);
+        }
+
+        // Drop Customer without CNP
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestDropCustomerWithEmptyString()
+        {
+            String cnp = "";
+            customerService.DropCustomerByCNP(cnp);
+        }
+
+        // Drop Customer with invalid CNP
+        [TestMethod]
+        [ExpectedException(typeof(EntityDoesNotExistException))]
+        public void TestDropCustomerWithInvalidCNP()
+        {
+            String cnp = "1234567890123";
+            customerService.DropCustomerByCNP(cnp);
+        }
+
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="DataMapperContext.cs" />
     <Compile Include="DataMapperFactoryMethod.cs" />
     <Compile Include="Exceptions\DuplicateException.cs" />
+    <Compile Include="Exceptions\EntityDoesNotExistException.cs" />
     <Compile Include="Exceptions\ServiceProviderException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Implementation\EFCustomerFactory.cs" />
