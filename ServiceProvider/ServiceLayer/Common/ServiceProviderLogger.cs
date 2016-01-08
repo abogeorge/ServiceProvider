@@ -10,10 +10,10 @@ namespace ServiceLayer.Common
     public class ServiceProviderLogger
     {
         private static ServiceProviderLogger instance;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private ServiceProviderLogger()
         {
-            Logger.SetLogWriter(new LogWriterFactory().Create());
         }
 
         public static ServiceProviderLogger GetInstance()
@@ -31,35 +31,12 @@ namespace ServiceLayer.Common
 
         public void logInfo(String message)
         {
-            if (Logger.IsLoggingEnabled())
-            {
-                LogEntry logEntry = new LogEntry()
-                {
-                    Message = message,
-                    Severity = System.Diagnostics.TraceEventType.Information
-                };
-
-                logEntry.ExtendedProperties["location"] = this.GetType().ToString();
-
-                Logger.Write(logEntry);
-            }
+            log.Info(message);
         }
 
-        public void logError(Exception exception)
+        public void logError(String message)
         {
-            if (Logger.IsLoggingEnabled())
-            {
-                LogEntry logEntry = new LogEntry()
-                {
-                    Message = exception.Message,
-                    Severity = System.Diagnostics.TraceEventType.Error
-                };
-
-                logEntry.ExtendedProperties["location"] = this.GetType().ToString();
-                logEntry.ExtendedProperties["Stack Trace"] = exception.StackTrace;
-
-                Logger.Write(logEntry);
-            }
+            log.Error(message);
         }
     }
 }
