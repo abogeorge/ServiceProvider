@@ -12,5 +12,11 @@ namespace DataMapper.Interfaces
         {
             get;
         }
+
+        ISubscriptionTypeFactory SubscriptionTypeFactory
+        {
+            get;
+        }
+
     }
 }

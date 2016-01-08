@@ -16,5 +16,14 @@ namespace DataMapper.Implementation
                 return new EFCustomerFactory();
             }
         }
+
+        public ISubscriptionTypeFactory SubscriptionTypeFactory
+        {
+            get
+            {
+                return new EFSubscriptionTypeFactory();
+            }
+        }
+
     }
 }

@@ -65,8 +65,10 @@
     <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Implementation\EFCustomerFactory.cs" />
     <Compile Include="Implementation\EFDataMapperFactory.cs" />
+    <Compile Include="Implementation\EFSubscriptionTypeFactory.cs" />
     <Compile Include="Interfaces\ICustomerFactory.cs" />
     <Compile Include="Interfaces\IDataMapperFactory.cs" />
+    <Compile Include="Interfaces\ISubscriptionTypeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

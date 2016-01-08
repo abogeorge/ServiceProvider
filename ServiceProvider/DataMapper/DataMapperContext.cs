@@ -21,5 +21,11 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<SubscriptionType> SubscriptionTypes
+        {
+            get;
+            set;
+        }
+
     }
 }

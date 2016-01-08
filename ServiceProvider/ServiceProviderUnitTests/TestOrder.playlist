@@ -1,0 +1,4 @@
+<Playlist Version="1.0">
+<Add Test = "ServiceProviderUnitTests.CustomerTest.*" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.*" />
+</Playlist>
