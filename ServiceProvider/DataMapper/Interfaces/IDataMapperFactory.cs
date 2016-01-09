@@ -18,5 +18,20 @@ namespace DataMapper.Interfaces
             get;
         }
 
+        IMinuteTypeFactory MinuteTypeFactory
+        {
+            get;
+        }
+
+        IMessageTypeFactory MessageTypeFactory
+        {
+            get;
+        }
+
+        ICurrencyFactory CurrencyFactory
+        {
+            get;
+        }
+
     }
 }

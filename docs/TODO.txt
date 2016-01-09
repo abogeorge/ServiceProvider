@@ -1,2 +1,2 @@
-- LOG: add DB log
-- ADDCUSTOMER: check email unicity or smtg
+- CONTRACT : deduct age from cnp
+- CONTRACT: add phone from subscription

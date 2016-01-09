@@ -64,6 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerTest.cs" />
     <Compile Include="SubscriptionTypeTest.cs" />
+    <Compile Include="MinuteTypeTest.cs" />
+    <Compile Include="MessageTypeTest.cs" />
+    <Compile Include="CurrencyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataMapper\DataMapper.csproj">

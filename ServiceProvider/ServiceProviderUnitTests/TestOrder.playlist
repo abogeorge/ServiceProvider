@@ -1,4 +1,88 @@
 <Playlist Version="1.0">
-<Add Test = "ServiceProviderUnitTests.CustomerTest.*" />
-<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.*" />
+
+
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerNull" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWith1CharcterFirstName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWith31CharcterFirstName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithRequiredFieldsOnly" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithoutAllRequiredFields" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithEmailAdress" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithBadEmailAdress" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithBadEmailAdress2" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithPhoneWOSpecialChars" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithPhoneWithSpecialChars" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithPhoneWithMoreSpecialChars" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithShortPhone" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithWrongPhone" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithShortCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithWrongCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomer" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestAddCustomerWithDuplicateCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestGetUserByCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestGetUserByCNPEmptyString" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestGetUserByWrongCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateLastName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateInvalidLastName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateLastNameInvalidCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateFirstName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateInvalidFirstName" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateFirstNameInvalidCNP" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateAdress" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateInvalidAdress" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateEmail" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateInvalidEmail" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdatePhone" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestUpdateInvalidPhone" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestDropCustomer" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestDropCustomerWithEmptyString" />
+<Add Test = "ServiceProviderUnitTests.CustomerTest.TestDropCustomerWithInvalidCNP" />
+
+
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestAddNullSubscriptyionType" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestAddSubscriptionTypeWithOneCharName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestAddSubscriptionTypeWithOverMaxCharName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestAddSubscriptionType" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestGetSubscriptionTypeByName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestGetSubscriptionTypeEmptyName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestGetSubscriptionTypeWrongName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestDropSubscriptionTypeWithEmptyName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestDropSubscriptionTypeWithInvalidName" />
+<Add Test = "ServiceProviderUnitTests.SubscriptionTypeTest.TestDropSubscriptionType" />
+
+
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestAddNullMinuteType" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestAddMinuteTypeWithOneCharName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestAddMinuteTypeWithOverMaxCharName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestAddMinuteType" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestGetMinuteTypeByName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestGetMinuteTypeEmptyName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestGetMinuteTypeWrongName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestDropMinuteTypeWithEmptyName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestDropMinuteTypeWithInvalidName" />
+<Add Test = "ServiceProviderUnitTests.MinuteTypeTest.TestDropMinuteType" />
+
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestAddNullMessageType" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestAddMessageTypeWithOneCharName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestAddMessageTypeWithOverMaxCharName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestAddMessageType" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestGetMessageTypeByName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestGetMessageTypeEmptyName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestGetMessageTypeWrongName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestDropMessageTypeWithEmptyName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestDropMessageTypeWithInvalidName" />
+<Add Test = "ServiceProviderUnitTests.MessageTypeTest.TestDropMessageType" />
+
+
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestAddNullCurrency" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestAddCurrencyWithOneCharName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestAddCurrencyWithOverMaxCharName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestAddSubscriptionType" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestGetCurrencyByName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestGetCurrencyEmptyName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestGetCurrencyWrongName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestDropCurrencyWithEmptyName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestDropSubscriptionTypeWithInvalidName" />
+<Add Test = "ServiceProviderUnitTests.CurrencyTest.TestDropCurrency" />
+
+
 </Playlist>

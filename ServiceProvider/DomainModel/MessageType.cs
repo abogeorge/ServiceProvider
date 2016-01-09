@@ -8,49 +8,42 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
-    public class Subscription
+    public class MessageType
     {
 
         #region Fields
-        public Subscription()
+
+        public MessageType()
         {
 
         }
 
         [System.ComponentModel.DataAnnotations.Key,
             System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public int SubscriptionId
+        public int MessageTypeId
         {
             get;
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "Subscription Name cannot be null!")]
-        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Subscription Name should have between {3} and {30} letters!")]
-        public String SubscriptionName
+        [NotNullValidator(MessageTemplate = "Message Type Name cannot be null!")]
+        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Message Type Name should have between {3} and {30} letters!")]
+        public String MessageTypeName
         {
             get;
             set;
         }
-
-        //[NotNullValidator(MessageTemplate = "Subscription Type Name cannot be null!")]
-        //[
-        //public Double Price
-        //{
-        //    get;
-        //    set;
-        //}
 
         #endregion
         #region Validation
 
-        internal static void Validate(SubscriptionType subscription, ValidationResults results)
+        internal static void Validate(MessageType messageType, ValidationResults results)
         {
             if (true)
             {
                 results.AddResult
                     (
-                        new ValidationResult("some reason from SelfValidation method", subscription, "ValidateMethod", "error", null)
+                        new ValidationResult("some reason from SelfValidation method", messageType, "ValidateMethod", "error", null)
                     );
             }
         }

@@ -8,54 +8,45 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
-    public class Subscription
+    public class Currency
     {
-
         #region Fields
-        public Subscription()
+
+        public Currency()
         {
 
         }
 
         [System.ComponentModel.DataAnnotations.Key,
             System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public int SubscriptionId
+        public int CurrencyId
         {
             get;
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "Subscription Name cannot be null!")]
-        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Subscription Name should have between {3} and {30} letters!")]
-        public String SubscriptionName
+        [NotNullValidator(MessageTemplate = "Currency Name cannot be null!")]
+        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Currency Name should have between {3} and {30} letters!")]
+        public String CurrencyName
         {
             get;
             set;
         }
-
-        //[NotNullValidator(MessageTemplate = "Subscription Type Name cannot be null!")]
-        //[
-        //public Double Price
-        //{
-        //    get;
-        //    set;
-        //}
 
         #endregion
         #region Validation
 
-        internal static void Validate(SubscriptionType subscription, ValidationResults results)
+        internal static void Validate(Currency currencyType, ValidationResults results)
         {
             if (true)
             {
                 results.AddResult
                     (
-                        new ValidationResult("some reason from SelfValidation method", subscription, "ValidateMethod", "error", null)
+                        new ValidationResult("some reason from SelfValidation method", currencyType, "ValidateMethod", "error", null)
                     );
             }
         }
 
         #endregion
-
     }
 }

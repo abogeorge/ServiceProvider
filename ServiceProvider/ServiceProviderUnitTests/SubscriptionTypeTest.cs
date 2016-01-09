@@ -24,7 +24,7 @@ namespace ServiceProviderUnitTests
         // Add a null subscription type
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void AddNullSubscriptyionType()
+        public void TestAddNullSubscriptyionType()
         {
             subscriptionTypeService.AddSubscriptionType(null);
         }
@@ -104,7 +104,7 @@ namespace ServiceProviderUnitTests
 
         // Drop subscription type
         [TestMethod]
-        public void TestDropCustomer()
+        public void TestDropSubscriptionType()
         {
             String subTypeName = "Mobil";
             SubscriptionType subType = subscriptionTypeService.GetSubscriptionTypeByName(subTypeName);

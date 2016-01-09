@@ -9,11 +9,35 @@ namespace DataMapper.Implementation
 {
     public class EFDataMapperFactory : IDataMapperFactory
     {
+        public ICurrencyFactory CurrencyFactory
+        {
+            get
+            {
+                return new EFCurrencyFactory();
+            }
+        }
+
         public ICustomerFactory CustomerFactory
         {
             get
             {
                 return new EFCustomerFactory();
+            }
+        }
+
+        public IMessageTypeFactory MessageTypeFactory
+        {
+            get
+            {
+                return new EFMessageTypeFactory();
+            }
+        }
+
+        public IMinuteTypeFactory MinuteTypeFactory
+        {
+            get
+            {
+                return new EFMinuteTypeFactory();
             }
         }
 

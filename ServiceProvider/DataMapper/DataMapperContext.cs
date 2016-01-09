@@ -27,5 +27,23 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<MinuteType> MinuteTypes
+        {
+            get;
+            set;
+        }
+
+        public DbSet<MessageType> MessageTypes
+        {
+            get;
+            set;
+        }
+
+        public DbSet<Currency> Currencies
+        {
+            get;
+            set;
+        }
+
     }
 }

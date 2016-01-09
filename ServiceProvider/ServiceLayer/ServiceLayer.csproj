@@ -70,10 +70,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ServiceProviderLogger.cs" />
+    <Compile Include="ICurrencyService.cs" />
     <Compile Include="ICustomerService.cs" />
+    <Compile Include="IMessageTypeService.cs" />
+    <Compile Include="IMinuteTypeService.cs" />
     <Compile Include="ISubscriptionTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesImplementation\CurrencyService.cs" />
     <Compile Include="ServicesImplementation\CustomerService.cs" />
+    <Compile Include="ServicesImplementation\MessageTypeService.cs" />
+    <Compile Include="ServicesImplementation\MinuteTypeService.cs" />
     <Compile Include="ServicesImplementation\SubscriptionTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
