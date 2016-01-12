@@ -9,9 +9,9 @@ namespace DataMapper.Interfaces
 {
     public interface IMinuteFactory
     {
-        void AddMinute(Minute minute);
-        Minute GetMinuteById(int id);
-        void DropMinute(int id);
+        void AddMinute(Minute minute, MinuteType minuteType);
+        Minute GetMinuteById(int id, MinuteType minuteType);
+        void DropMinute(int id, MinuteType minuteType);
         void UpdateIncludedMinutes(Minute minute);
         void UpdateExtraCharge(Minute minute);
     }

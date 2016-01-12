@@ -36,11 +36,9 @@ namespace DataMapper.Implementation
                 var currencyVar = context.Currencies.Find(currency.CurrencyId);
                 var currencyRateVar = context.CurrencieRates.Find(currencyRate.CurrencyRateId);
                 context.Entry(currencyVar).Collection("CurrencyRates").Load();
-                //context.CurrencieRates.Attach(currencyRate);
                 currencyVar.CurrencyRates.Remove(currencyRateVar);
                 context.CurrencieRates.Attach(currencyRateVar);
                 context.CurrencieRates.Remove(currencyRateVar);
-                // context.CurrencieRates.Remove(currencyRate);
                 context.SaveChanges();
             }
         }

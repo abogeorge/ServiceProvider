@@ -116,4 +116,8 @@
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByEmptyID" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByFalseID" />
 
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinuteWithNullId" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinuteWithFalseId" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinute" />
+
 </Playlist>

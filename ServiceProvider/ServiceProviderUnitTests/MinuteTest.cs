@@ -34,7 +34,7 @@ namespace ServiceProviderUnitTests
         [ExpectedException(typeof(ValidationException))]
         public void TestAddNullMinute()
         {
-            minuteService.AddMinute(null);
+            minuteService.AddMinute(null, null);
         }
 
         // Add minute with included minutes < 0
@@ -43,7 +43,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithLTZeroIncludedMins()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = -1 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = -1 }, minType);
         }
 
         // Add minute with included minutes > 100000
@@ -52,7 +52,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithGTMaxIncludedMins()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 100001 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 100001 }, minType);
         }
 
         // Add minute with extra charge < 0
@@ -61,7 +61,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithLTZeroExtraCharge()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = -1, IncludedMinutes = 2000 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = -1, IncludedMinutes = 2000 }, minType);
         }
 
         // Add minute with extra charge > 1000.0
@@ -70,7 +70,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithGTMaxExtraCharge()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 1001, IncludedMinutes = 2000 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 1001, IncludedMinutes = 2000 }, minType);
         }
 
         // Add minute with included minutes = 0
@@ -78,7 +78,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithZeroIncludedMins()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 0 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 0 }, minType);
         }
 
         // Add minute with extra charge = 0
@@ -86,7 +86,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithZeroExtraCharge()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 0, IncludedMinutes = 1000 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 0, IncludedMinutes = 1000 }, minType);
         }
 
         // Add minute with included minutes = max
@@ -94,7 +94,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithMaxIncludedMins()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 100000 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 100000 }, minType);
         }
 
         // Add minute with extra charge = max
@@ -102,7 +102,7 @@ namespace ServiceProviderUnitTests
         public void TestAddMinuteWithMaxExtraCharge()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 1000, IncludedMinutes = 1000 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 1000, IncludedMinutes = 1000 }, minType);
         }
 
         // Add a minute
@@ -110,14 +110,15 @@ namespace ServiceProviderUnitTests
         public void TestAddMinute()
         {
             MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
-            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 500 });
+            minuteService.AddMinute(new Minute { MinuteType = minType, ExtraCharge = 7, IncludedMinutes = 500 }, minType);
         }
 
         // Retrieve minute by id
         [TestMethod]
         public void TestGetMinuteByID()
         {
-            Minute minute = minuteService.GetMinuteById(1);
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
             Assert.AreEqual(minute.IncludedMinutes, 0);
         }
 
@@ -126,15 +127,49 @@ namespace ServiceProviderUnitTests
         [ExpectedException(typeof(ValidationException))]
         public void TestGetMinuteByEmptyID()
         {
-            Minute minute = minuteService.GetMinuteById(0);
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(0, minType);
         }
 
         // Retrieve minute with false id
         [TestMethod]
         public void TestGetMinuteByFalseID()
         {
-            Minute minute = minuteService.GetMinuteById(1000);
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1000, minType);
             Assert.IsNull(minute);
+        }
+
+        // -------------- DROPS
+
+        // Drop minute with null id
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestDropMinuteWithNullId()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            minuteService.DropMinute(0, minType);
+        }
+
+        // Drop minute with inexistent id
+        [TestMethod]
+        [ExpectedException(typeof(EntityDoesNotExistException))]
+        public void TestDropMinuteWithFalseId()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            minuteService.DropMinute(5000, minType);
+        }
+
+        // Drop Minute
+        [TestMethod]
+        public void TestDropMinute()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.IsNotNull(minute);
+            minuteService.DropMinute(1, minType);
+            Minute minuteDropped = minuteService.GetMinuteById(1, minType);
+            Assert.IsNull(minuteDropped);
         }
 
     }

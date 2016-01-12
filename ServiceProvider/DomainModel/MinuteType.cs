@@ -14,14 +14,14 @@ namespace DomainModel
 
         public MinuteType()
         {
-           // this.Minute = new Minute();
+            this.Minutes = new List<Minute>();
         }
 
-        //public virtual Minute Minute
-        //{
-        //    get;
-        //    set;
-        //}
+        public virtual ICollection<Minute> Minutes
+        {
+            get;
+            set;
+        }
 
         [System.ComponentModel.DataAnnotations.Key,
             System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]

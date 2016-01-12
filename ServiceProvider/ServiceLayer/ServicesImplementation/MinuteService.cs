@@ -22,7 +22,7 @@ namespace ServiceLayer.ServicesImplementation
             logger = ServiceProviderLogger.GetInstance();
         }
 
-        public void AddMinute(Minute minute)
+        public void AddMinute(Minute minute, MinuteType minuteType)
         {
             logger.logInfo("Attempting to add a new minute ... ");
 
@@ -34,16 +34,24 @@ namespace ServiceLayer.ServicesImplementation
                 throw new ValidationException(message);
             }
 
-            DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.AddMinute(minute);
+            DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.AddMinute(minute, minuteType);
             logger.logInfo("Add minute operation ended.");
         }
 
-        public void DropMinute(int id)
+        public void DropMinute(int id, MinuteType minuteType)
         {
-            throw new NotImplementedException();
+            logger.logInfo("Attempting to drop minute ...");
+            if (id == 0)
+            {
+                String message = "Id field is null!";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.DropMinute(id, minuteType);
+            logger.logInfo("Drop minute operation ended.");
         }
 
-        public Minute GetMinuteById(int id)
+        public Minute GetMinuteById(int id, MinuteType minuteType)
         {
             logger.logInfo("Attempting to retrieve minute by id ...");
             if (id == 0)
@@ -53,7 +61,7 @@ namespace ServiceLayer.ServicesImplementation
                 throw new ValidationException(message);
             }
             logger.logInfo("Retrieve minute operation ended.");
-            return DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.GetMinuteById(id);
+            return DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.GetMinuteById(id, minuteType);
         }
 
         public void UpdateExtraCharge(Minute minute)
