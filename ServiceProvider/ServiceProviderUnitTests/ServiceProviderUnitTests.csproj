@@ -68,6 +68,7 @@
     <Compile Include="MessageTypeTest.cs" />
     <Compile Include="CurrencyTest.cs" />
     <Compile Include="CurrencyRateTest.cs" />
+    <Compile Include="MinuteTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataMapper\DataMapper.csproj">

@@ -38,5 +38,10 @@ namespace DataMapper.Interfaces
             get;
         }
 
+        IMinuteFactory MinuteFactory
+        {
+            get;
+        }
+
     }
 }

@@ -102,5 +102,18 @@
 <Add Test="ServiceProviderUnitTests.CurrencyRateTest.TestDropCurrencyRateInvalidCurrency" /> 
 <Add Test="ServiceProviderUnitTests.CurrencyRateTest.TestDropCurrencyRate" /> 
 
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteType" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddNullMinute" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithLTZeroIncludedMins" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithGTMaxIncludedMins" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithLTZeroExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithZeroIncludedMins" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithZeroExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithMaxIncludedMins" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithMaxExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinute" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByID" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByEmptyID" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByFalseID" />
 
 </Playlist>

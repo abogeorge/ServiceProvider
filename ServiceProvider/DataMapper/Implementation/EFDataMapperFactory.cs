@@ -41,6 +41,14 @@ namespace DataMapper.Implementation
             }
         }
 
+        public IMinuteFactory MinuteFactory
+        {
+            get
+            {
+                return new EFMinuteFactory();
+            }
+        }
+
         public IMinuteTypeFactory MinuteTypeFactory
         {
             get

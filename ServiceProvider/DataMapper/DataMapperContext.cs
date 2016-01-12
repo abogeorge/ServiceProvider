@@ -51,5 +51,11 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<Minute> Minutes
+        {
+            get;
+            set;
+        }
+
     }
 }
