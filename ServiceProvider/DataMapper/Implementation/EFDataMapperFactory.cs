@@ -17,6 +17,14 @@ namespace DataMapper.Implementation
             }
         }
 
+        public ICurrencyRateFactory CurrencyRateFactory
+        {
+            get
+            {
+                return new EFCurrencyRateFactory();
+            }
+        }
+
         public ICustomerFactory CustomerFactory
         {
             get

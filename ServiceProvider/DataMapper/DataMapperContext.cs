@@ -45,5 +45,11 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<CurrencyRate> CurrencieRates
+        {
+            get;
+            set;
+        }
+
     }
 }

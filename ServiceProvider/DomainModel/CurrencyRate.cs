@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
-    public class Currency
+    public class CurrencyRate
     {
-        #region Fields
 
-        public Currency()
+        #region Fields
+        public CurrencyRate()
         {
-            this.CurrencyRates = new List<CurrencyRate>();
+            this.Currency = new Currency();
         }
 
-        public virtual ICollection<CurrencyRate> CurrencyRates
+        public virtual Currency Currency
         {
             get;
             set;
@@ -25,24 +25,33 @@ namespace DomainModel
 
         [System.ComponentModel.DataAnnotations.Key,
             System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public int CurrencyId
+        public int CurrencyRateId
         {
             get;
             set;
         }
 
-        [NotNullValidator(MessageTemplate = "Currency Name cannot be null!")]
-        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Currency Name should have between {3} and {30} letters!")]
-        public String CurrencyName
+        [NotNullValidator(MessageTemplate = "Currency Rate cannot be null!")]
+        [RangeValidator(0.0, RangeBoundaryType.Inclusive, 10000.0, RangeBoundaryType.Inclusive, ErrorMessage = "Currency Rate must be a double value between 0 and 10000")]
+        public Double RateToRON
+        {
+            get;
+            set;
+        }
+
+        [NotNullValidator(MessageTemplate = "Currency Rate valability cannot be null!")]
+        [RegexValidator(@"\(?\d{2}\)?-?.? *\d{4}$", ErrorMessage = "Invalid currency valability!")]
+        public String Valability
         {
             get;
             set;
         }
 
         #endregion
+
         #region Validation
 
-        internal static void Validate(Currency currencyType, ValidationResults results)
+        internal static void Validate(CurrencyRate currencyType, ValidationResults results)
         {
             if (true)
             {
@@ -54,5 +63,6 @@ namespace DomainModel
         }
 
         #endregion
+
     }
 }

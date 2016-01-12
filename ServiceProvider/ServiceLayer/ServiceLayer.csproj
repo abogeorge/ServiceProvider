@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ServiceProviderLogger.cs" />
+    <Compile Include="ICurrencyRateService.cs" />
     <Compile Include="ICurrencyService.cs" />
     <Compile Include="ICustomerService.cs" />
     <Compile Include="IMessageTypeService.cs" />
@@ -89,6 +90,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Compile Include="ServicesImplementation\CurrenyRateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataMapper\DataMapper.csproj">

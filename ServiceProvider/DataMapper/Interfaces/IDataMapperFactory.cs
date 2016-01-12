@@ -33,5 +33,10 @@ namespace DataMapper.Interfaces
             get;
         }
 
+        ICurrencyRateFactory CurrencyRateFactory
+        {
+            get;
+        }
+
     }
 }
