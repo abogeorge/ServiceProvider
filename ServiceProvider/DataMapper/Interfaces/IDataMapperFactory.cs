@@ -43,5 +43,10 @@ namespace DataMapper.Interfaces
             get;
         }
 
+        IMessageFactory MessageFactory
+        {
+            get;
+        }
+
     }
 }

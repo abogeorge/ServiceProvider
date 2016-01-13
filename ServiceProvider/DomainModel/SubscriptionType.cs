@@ -14,7 +14,13 @@ namespace DomainModel
 
         public SubscriptionType()
         {
+            this.Subscriptions = new List<Subscription>();
+        }
 
+        public virtual ICollection<Subscription> Subscriptions
+        {
+            get;
+            set;
         }
 
         [System.ComponentModel.DataAnnotations.Key,

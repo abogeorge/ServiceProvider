@@ -57,5 +57,11 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<Message> Messages
+        {
+            get;
+            set;
+        }
+
     }
 }

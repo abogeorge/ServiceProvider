@@ -15,7 +15,13 @@ namespace DomainModel
 
         public MessageType()
         {
+            this.Messages = new List<Message>();
+        }
 
+        public virtual ICollection<Message> Messages
+        {
+            get;
+            set;
         }
 
         [System.ComponentModel.DataAnnotations.Key,

@@ -58,12 +58,25 @@ namespace DataMapper.Implementation
 
         public void UpdateExtraCharge(Minute minute)
         {
-            throw new NotImplementedException();
+            using (var context = new DataMapperContext())
+            {
+                context.Minutes.Attach(minute);
+                var entry = context.Entry(minute);
+                entry.Property(m => m.ExtraCharge).IsModified = true;
+                context.SaveChanges();
+            }
+
         }
 
         public void UpdateIncludedMinutes(Minute minute)
         {
-            throw new NotImplementedException();
+            using (var context = new DataMapperContext())
+            {
+                context.Minutes.Attach(minute);
+                var entry = context.Entry(minute);
+                entry.Property(m => m.IncludedMinutes).IsModified = true;
+                context.SaveChanges();
+            }
         }
     }
 }

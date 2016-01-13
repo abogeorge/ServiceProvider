@@ -140,6 +140,80 @@ namespace ServiceProviderUnitTests
             Assert.IsNull(minute);
         }
 
+        // Update minute extra charge by id
+        [TestMethod]
+        public void TestUpdateMinuteExtraCharge()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.ExtraCharge, 7);
+            minute.ExtraCharge = 12;
+            minuteService.UpdateExtraCharge(minute);
+            Minute minuteUpdated = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minuteUpdated.ExtraCharge, 12);
+        }
+
+        // Update minute extra charge invalid 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateMinuteExtraChargeInvalid()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.ExtraCharge, 12);
+            minute.ExtraCharge = -1;
+            minuteService.UpdateExtraCharge(minute);
+        }
+
+        // Update minute extra charge invalid 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateMinuteExtraChargeInvalidGTMax()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.ExtraCharge, 12);
+            minute.ExtraCharge = 15000;
+            minuteService.UpdateExtraCharge(minute);
+        }
+
+        // Update minute included minutes
+        [TestMethod]
+        public void TestUpdateMinuteIncluded()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.IncludedMinutes, 0);
+            minute.IncludedMinutes = 10;
+            minuteService.UpdateIncludedMinutes(minute);
+            Minute minuteUpdated = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minuteUpdated.IncludedMinutes, 10);
+        }
+
+        // Update minutes included invalid 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateMinuteIncludedInvalid()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.IncludedMinutes, 10);
+            minute.IncludedMinutes = -1;
+            minuteService.UpdateIncludedMinutes(minute);
+        }
+
+        // Update minutes included invalid 
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void TestUpdateMinuteIncludedInvalidGTMax()
+        {
+            MinuteType minType = minuteTypeService.GetMinuteTypeByName(validMinType);
+            Minute minute = minuteService.GetMinuteById(1, minType);
+            Assert.AreEqual(minute.IncludedMinutes, 10);
+            minute.IncludedMinutes = 150000;
+            minuteService.UpdateIncludedMinutes(minute);
+        }
+
         // -------------- DROPS
 
         // Drop minute with null id

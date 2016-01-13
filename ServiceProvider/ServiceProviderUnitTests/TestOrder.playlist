@@ -102,6 +102,7 @@
 <Add Test="ServiceProviderUnitTests.CurrencyRateTest.TestDropCurrencyRateInvalidCurrency" /> 
 <Add Test="ServiceProviderUnitTests.CurrencyRateTest.TestDropCurrencyRate" /> 
 
+
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteType" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestAddNullMinute" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestAddMinuteWithLTZeroIncludedMins" />
@@ -115,9 +116,40 @@
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByID" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByEmptyID" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestGetMinuteByFalseID" />
-
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteExtraChargeInvalid" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteExtraChargeInvalidGTMax" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteIncluded" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteIncludedInvalid" />
+<Add Test="ServiceProviderUnitTests.MinuteTest.TestUpdateMinuteIncludedInvalidGTMax" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinuteWithNullId" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinuteWithFalseId" />
 <Add Test="ServiceProviderUnitTests.MinuteTest.TestDropMinute" />
+
+
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageType" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddNullMessage" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithLTZeroIncludedMes" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithGTMaxIncludedMes" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithLTZeroExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithGTMaxExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithZeroIncludedMes" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithZeroExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithMaxIncludedMes" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessageWithMaxExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestAddMessage" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestGetMessageByID" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestGetMessageByEmptyID" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestGetMessgeByFalseID" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMessageExtraCharge" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMessageExtraChargeInvalid" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMinuteExtraChargeInvalidGTMax" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMessageIncluded" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMessageIncludedInvalid" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestUpdateMessageIncludedInvalidGTMax" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestDropMessageWithNullId" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestDropMessageWithFalseId" />
+<Add Test="ServiceProviderUnitTests.MessageTest.TestDropMessage" />
+
 
 </Playlist>

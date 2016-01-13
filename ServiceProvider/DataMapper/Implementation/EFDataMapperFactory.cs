@@ -33,6 +33,14 @@ namespace DataMapper.Implementation
             }
         }
 
+        public IMessageFactory MessageFactory
+        {
+            get
+            {
+                return new EFMessageFactory();
+            }
+        }
+
         public IMessageTypeFactory MessageTypeFactory
         {
             get

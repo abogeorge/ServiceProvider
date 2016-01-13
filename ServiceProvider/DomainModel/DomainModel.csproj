@@ -52,6 +52,7 @@
     <Compile Include="Currency.cs" />
     <Compile Include="CurrencyRate.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="Minute.cs" />
     <Compile Include="MinuteType.cs" />

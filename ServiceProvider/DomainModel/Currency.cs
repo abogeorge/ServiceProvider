@@ -15,9 +15,16 @@ namespace DomainModel
         public Currency()
         {
             this.CurrencyRates = new List<CurrencyRate>();
+            this.Subscriptions = new List<Subscription>();
         }
 
         public virtual ICollection<CurrencyRate> CurrencyRates
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Subscription> Subscriptions
         {
             get;
             set;

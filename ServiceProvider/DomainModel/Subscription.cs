@@ -14,7 +14,20 @@ namespace DomainModel
         #region Fields
         public Subscription()
         {
+            this.SubType = new SubscriptionType();
+            this.Currency = new Currency();
+        }
 
+        public virtual SubscriptionType SubType
+        {
+            get;
+            set;
+        }
+
+        public virtual Currency Currency
+        {
+            get;
+            set;
         }
 
         [System.ComponentModel.DataAnnotations.Key,
@@ -33,13 +46,28 @@ namespace DomainModel
             set;
         }
 
-        //[NotNullValidator(MessageTemplate = "Subscription Type Name cannot be null!")]
-        //[
-        //public Double Price
-        //{
-        //    get;
-        //    set;
-        //}
+        [NotNullValidator(MessageTemplate = "Price cannot be null!")]
+        [RangeValidator(0.0, RangeBoundaryType.Inclusive, 1000.0, RangeBoundaryType.Inclusive, ErrorMessage = "Price should be a double value between 0 and 1000")]
+        public Double Price
+        {
+            get;
+            set;
+        }
+
+        [NotNullValidator(MessageTemplate = "Period cannot be null!")]
+        [RangeValidator(0, RangeBoundaryType.Inclusive, 48, RangeBoundaryType.Inclusive, ErrorMessage = "Period should be a double value between 0 and 1000")]
+        public int FixedPeriod
+        {
+            get;
+            set;
+        }
+
+        [NotNullValidator(MessageTemplate = "Availability cannot be null!")]
+        public bool Available
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Validation

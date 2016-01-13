@@ -66,12 +66,29 @@ namespace ServiceLayer.ServicesImplementation
 
         public void UpdateExtraCharge(Minute minute)
         {
-            throw new NotImplementedException();
+            logger.logInfo("Attempting to edit minute extra charge ...");
+            var validationResult = Validation.Validate<Minute>(minute);
+            if (!validationResult.IsValid)
+            {
+                String message = "Invalid fields for minute.";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.UpdateExtraCharge(minute);
+
         }
 
         public void UpdateIncludedMinutes(Minute minute)
         {
-            throw new NotImplementedException();
+            logger.logInfo("Attempting to edit minute included minutes ...");
+            var validationResult = Validation.Validate<Minute>(minute);
+            if (!validationResult.IsValid)
+            {
+                String message = "Invalid fields for minute.";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+            DataMapperFactoryMethod.GetCurrentFactory().MinuteFactory.UpdateIncludedMinutes(minute);
         }
     }
 }
