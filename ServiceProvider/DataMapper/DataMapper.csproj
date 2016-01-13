@@ -71,6 +71,7 @@
     <Compile Include="Implementation\EFMessageTypeFactory.cs" />
     <Compile Include="Implementation\EFMinuteFactory.cs" />
     <Compile Include="Implementation\EFMinuteTypeFactory.cs" />
+    <Compile Include="Implementation\EFSubscriptionFactory.cs" />
     <Compile Include="Implementation\EFSubscriptionTypeFactory.cs" />
     <Compile Include="Interfaces\ICurrencyFactory.cs" />
     <Compile Include="Interfaces\ICurrencyRateFactory.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interfaces\IMinuteFactory.cs" />
     <Compile Include="Interfaces\IMinuteTypeFactory.cs" />
     <Compile Include="Interfaces\IMessageTypeFactory.cs" />
+    <Compile Include="Interfaces\ISubscriptionFactory.cs" />
     <Compile Include="Interfaces\ISubscriptionTypeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

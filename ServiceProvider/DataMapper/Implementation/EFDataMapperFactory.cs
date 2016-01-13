@@ -65,6 +65,14 @@ namespace DataMapper.Implementation
             }
         }
 
+        public ISubscriptionFactory SubscriptionFactory
+        {
+            get
+            {
+                return new EFSubscriptionFactory();
+            }
+        }
+
         public ISubscriptionTypeFactory SubscriptionTypeFactory
         {
             get

@@ -63,5 +63,11 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<Subscription> Subscriptions
+        {
+            get;
+            set;
+        }
+
     }
 }

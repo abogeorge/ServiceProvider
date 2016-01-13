@@ -48,5 +48,10 @@ namespace DataMapper.Interfaces
             get;
         }
 
+        ISubscriptionFactory SubscriptionFactory
+        {
+            get;
+        }
+
     }
 }
