@@ -152,4 +152,38 @@
 <Add Test="ServiceProviderUnitTests.MessageTest.TestDropMessage" />
 
 
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddGetSubscriptionType" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddGetCurrency" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddNullSubscription" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscription" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithShortName" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithLongName" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithFixName" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithNegativePrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithOverMaxPrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithDoublePrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithNegativeValability" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithOverMaxValability" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionWithMinValability" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestAddSubscriptionDuplicate" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestGetSubscription" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestGetSubscriptionWithEmptyName" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestGetSubscriptionInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionPrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalid" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalidPrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalidPriceGTMax" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionPeriod" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePeriodSubscriptionInvalid" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePeriodSubscriptionInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalidPeriod" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePeriodSubscriptionInvalidPeriodTMax" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionAvailability" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateAvailabilitySubscriptionInvalid" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateAvailabilitySubscriptionInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscription" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscriptionEmptyName" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscriptionInvalidName" />
+
 </Playlist>

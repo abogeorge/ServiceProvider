@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="CurrencyRate.cs" />
     <Compile Include="Customer.cs" />
