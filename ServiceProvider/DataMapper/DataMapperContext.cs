@@ -69,5 +69,10 @@ namespace DataMapper
             set;
         }
 
+        public DbSet<Contract> Contracts
+        {
+            get;
+            set;
+        }
     }
 }

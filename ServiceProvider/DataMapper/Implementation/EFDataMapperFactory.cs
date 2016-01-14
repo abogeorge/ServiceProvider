@@ -81,5 +81,14 @@ namespace DataMapper.Implementation
             }
         }
 
+        public IContractFactory ContractFactory
+        {
+            get
+            {
+                return new EFContractFactory();
+            }
+        }
+
+
     }
 }

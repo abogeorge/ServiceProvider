@@ -71,6 +71,7 @@
     <Compile Include="MinuteTest.cs" />
     <Compile Include="MessageTest.cs" />
     <Compile Include="SubscriptionTest.cs" />
+    <Compile Include="ContractTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataMapper\DataMapper.csproj">

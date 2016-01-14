@@ -17,6 +17,13 @@ namespace DomainModel
         {
             Email = "";
             Phone = "";
+            this.Contracts = new List<Contract>();
+        }
+
+        public virtual ICollection<Contract> Contracts
+        {
+            get;
+            set;
         }
 
         [System.ComponentModel.DataAnnotations.Key,

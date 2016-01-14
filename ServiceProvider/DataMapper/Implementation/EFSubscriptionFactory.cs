@@ -71,12 +71,7 @@ namespace DataMapper.Implementation
 
         public void DropSubscriptionByName(Subscription subscription, SubscriptionType subscriptionType, Currency currency)
         {
-            //Subscription subscription = GetSubscriptionByName(subName);
-            //if (subscription == null)
-            //{
-            //    throw new EntityDoesNotExistException("Invalid Name.");
-            //}
-
+            
             using (var context = new DataMapperContext())
             {
                 var subType = context.SubscriptionTypes.Find(subscriptionType.SubscriptionTypeId);
@@ -89,19 +84,7 @@ namespace DataMapper.Implementation
                 context.Subscriptions.Attach(sub);
                 context.Subscriptions.Remove(sub);
                 context.SaveChanges();
-
-                //var minType = context.MinuteTypes.Find(minuteType.MinuteTypeId);
-                //var min = context.Minutes.Find(minute.MinuteId);
-                //context.Entry(minType).Collection("Minutes").Load();
-                //minType.Minutes.Remove(min);
-                //context.Minutes.Attach(min);
-                //context.Minutes.Remove(min);
-                //context.SaveChanges();
-
-
-                //context.Subscriptions.Attach(subscription);
-                //context.Subscriptions.Remove(subscription);
-                //context.SaveChanges();
+                
             }
         }
     }

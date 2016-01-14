@@ -16,6 +16,7 @@ namespace DomainModel
         {
             this.SubType = new SubscriptionType();
             this.Currency = new Currency();
+            this.Contracts = new List<Contract>();
         }
 
         public virtual SubscriptionType SubType
@@ -25,6 +26,12 @@ namespace DomainModel
         }
 
         public virtual Currency Currency
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Contract> Contracts
         {
             get;
             set;
