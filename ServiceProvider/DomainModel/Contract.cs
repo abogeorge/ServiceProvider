@@ -54,7 +54,7 @@ namespace DomainModel
         }
 
         [NotNullValidator(MessageTemplate = "Subscription Name cannot be null!")]
-        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 60, RangeBoundaryType.Inclusive, ErrorMessage = "Subscription Name should have between {3} and {30} letters!")]
+        [StringLengthValidator(3, RangeBoundaryType.Inclusive, 30, RangeBoundaryType.Inclusive, ErrorMessage = "Subscription Name should have between {3} and {30} letters!")]
         public String ContractName
         {
             get;
@@ -86,7 +86,7 @@ namespace DomainModel
         public bool CheckDateValidity()
         {
             TimeSpan difDay = EndDate.Subtract(StartDate);
-            if(((int)difDay.TotalDays / 365) < 28)
+            if(((int)difDay.TotalDays) < 1)
             {
                 return false;
             }
@@ -97,49 +97,7 @@ namespace DomainModel
 
         }
 
-        //public int GetVarstaDinCNP(String cnpClient)
-        //{
-        //    //string sub = cnpClient.Substring(1, 6);
-        //    String sex = cnpClient[0].ToString();
-
-
-        //    String anCNP = "";
-
-        //    if (sex.Equals("1") || sex.Equals("2"))
-        //    {
-        //        anCNP += "19";
-        //    }
-        //    else
-        //    {
-        //        if (sex.Equals("3") || sex.Equals("4"))
-        //        {
-        //            anCNP += "18";
-        //        }
-        //        else
-        //        {
-        //            if (sex.Equals("5") || sex.Equals("6"))
-        //            {
-        //                anCNP += "20";
-        //            }
-        //            else
-        //            {
-        //                throw new ValidationException("CNP Invalid");
-        //            }
-        //        }
-
-        //    }
-
-        //    anCNP += cnpClient[1].ToString() + cnpClient[2].ToString();
-
-
-        //    String lunaCNP = cnpClient[3].ToString() + cnpClient[4].ToString();
-        //    String ziuaCNP = cnpClient[5].ToString() + cnpClient[6].ToString();
-        //    DateTime date = DateTime.ParseExact(anCNP + "-" + lunaCNP + "-" + ziuaCNP, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-        //    TimeSpan tSpan = DateTime.Now.Subtract(date);
-        //    return ((int)tSpan.TotalDays / 365);
-        //}
-    }
-
+        
         #endregion
     }
 }

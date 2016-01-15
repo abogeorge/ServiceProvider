@@ -1,3 +1,1 @@
-- CONTRACT : deduct age from cnp
-- CONTRACT: daca la subscriptie e pe perioada determinata .. adauga data expirarii abonament in functie de aia
-- CONTRACT: validare data expiare > data inchiere
+- SUBSCRIPTION: data disponibila

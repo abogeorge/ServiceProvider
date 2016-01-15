@@ -87,5 +87,16 @@ namespace DataMapper.Implementation
                 
             }
         }
+
+        public void UpdateSubscriptionEndDate(Subscription subscription)
+        {
+            using (var context = new DataMapperContext())
+            {
+                context.Subscriptions.Attach(subscription);
+                var entry = context.Entry(subscription);
+                entry.Property(u => u.EndDate).IsModified = true;
+                context.SaveChanges();
+            }
+        }
     }
 }

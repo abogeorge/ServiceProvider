@@ -76,6 +76,23 @@ namespace DomainModel
             set;
         }
 
+        [NotNullValidator(MessageTemplate = "Start date cannot be null!")]
+        [System.ComponentModel.DataAnnotations.DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        public DateTime StartDate
+        {
+            get;
+            set;
+        }
+
+        [NotNullValidator(MessageTemplate = "End date cannot be null!")]
+        [System.ComponentModel.DataAnnotations.DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        public DateTime EndDate
+        {
+            get;
+            set;
+        }
+
+
         #endregion
         #region Validation
 
@@ -88,6 +105,20 @@ namespace DomainModel
                         new ValidationResult("some reason from SelfValidation method", subscription, "ValidateMethod", "error", null)
                     );
             }
+        }
+
+        public bool CheckDateValidity()
+        {
+            TimeSpan difDay = EndDate.Subtract(StartDate);
+            if (((int)difDay.TotalDays) < 1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
         #endregion

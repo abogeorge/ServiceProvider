@@ -14,6 +14,8 @@ namespace DataMapper.Interfaces
         void UpdateSubscriptionPrice(Subscription subscription);
         void UpdateSubscriptionFixedPeriod(Subscription subscription);
         void UpdateSubscriptionAvailability(Subscription subscription);
+        void UpdateSubscriptionEndDate(Subscription subscription);
         void DropSubscriptionByName(Subscription subscription, SubscriptionType subscriptionType, Currency currency);
+        
     }
 }

@@ -34,7 +34,7 @@ namespace ServiceLayer.ServicesImplementation
             }
 
             var validationResult = Validation.Validate<Subscription>(subscription);
-            if (!validationResult.IsValid)
+            if (!validationResult.IsValid || !subscription.CheckDateValidity())
             {
                 String message = "Invalid fields for Subscription.";
                 logger.logError(message);
@@ -68,6 +68,23 @@ namespace ServiceLayer.ServicesImplementation
                 logger.logError(message);
                 throw new EntityDoesNotExistException(message);
             }
+
+            // check that subscription has expired
+            if(subscription.EndDate.CompareTo(DateTime.Now) > 0)
+            {
+                String message = "Subscription it's still valid. Cannont update price!";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+
+            // check that subscription is not available
+            if (subscription.Available == true)
+            {
+                String message = "Subscription it's still valid. Cannont update price!";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+
             subscription.Price = price;
             var validationResult = Validation.Validate<Subscription>(subscription);
             if (!validationResult.IsValid)
@@ -135,6 +152,36 @@ namespace ServiceLayer.ServicesImplementation
             }
             DataMapperFactoryMethod.GetCurrentFactory().SubscriptionFactory.DropSubscriptionByName(subscription, subscriptionType, currency);
             logger.logInfo("Drop subscription operation ended.");
+        }
+
+        public void UpdateSubscriptionEndDate(string subName, DateTime endDate)
+        {
+            logger.logInfo("Attempting to edit subscription end date ... ");
+            Subscription subscription = GetSubscriptionByName(subName);
+            if (subscription == null)
+            {
+                String message = "The subscription does not exist.";
+                logger.logError(message);
+                throw new EntityDoesNotExistException(message);
+            }
+            subscription.EndDate = endDate;
+            var validationResult = Validation.Validate<Subscription>(subscription);
+            if (!validationResult.IsValid || !subscription.CheckDateValidity())
+            {
+                String message = "Invalid fields for subscription";
+                logger.logError(message);
+                throw new ValidationException(message);
+            }
+
+            // change availability to
+            if(subscription.Available == false)
+            {
+                subscription.Available = true;
+                DataMapperFactoryMethod.GetCurrentFactory().SubscriptionFactory.UpdateSubscriptionAvailability(subscription);
+            }
+
+            DataMapperFactoryMethod.GetCurrentFactory().SubscriptionFactory.UpdateSubscriptionEndDate(subscription);
+            logger.logInfo("Edit subscription end date operation ended.");
         }
     }
 }

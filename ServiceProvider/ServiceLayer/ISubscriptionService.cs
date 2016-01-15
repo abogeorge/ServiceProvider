@@ -14,6 +14,7 @@ namespace ServiceLayer
         void UpdateSubscriptionPrice(String subName, Double price);
         void UpdateSubscriptionFixedPeriod(String subName, int period);
         void UpdateSubscriptionAvailability(String subName, bool av);
+        void UpdateSubscriptionEndDate(String subName, DateTime endDate);
         void DropSubscription(String subName, SubscriptionType subscriptionType, Currency currency);
     }
 }

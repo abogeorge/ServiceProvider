@@ -170,6 +170,8 @@
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestGetSubscriptionWithEmptyName" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestGetSubscriptionInexistent" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionPrice" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatesubcriptionPriceStillValid" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatesubcriptionPriceUnExpired" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalid" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInexistent" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdatePriceSubscriptionInvalidPrice" />
@@ -182,8 +184,43 @@
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionAvailability" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateAvailabilitySubscriptionInvalid" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateAvailabilitySubscriptionInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionEndDate" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionEndDateInvalid" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionEndDateInexistent" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionEndDateLTStartDate" />
+<Add Test="ServiceProviderUnitTests.SubscriptionTest.TestUpdateSubscriptionEndDateAndAvailability" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscription" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscriptionEmptyName" />
 <Add Test="ServiceProviderUnitTests.SubscriptionTest.TestDropSubscriptionInvalidName" />
+
+
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddGetCustomer" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddGetSubscription" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddNullContract" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContract" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractShortName" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractLongName" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractExactMinName" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractNegativePrice" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractGTMaxPrice" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractDoublePrice" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractPriceMissing" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractStartdDateGTEndDate" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestAddContractDuplicate" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestGetContract" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestGetContractInvalid" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestGetContractInexistent" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractPrice" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractPriceInexistent" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractPriceInvalid" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractPriceLTZero" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractPriceGTMax" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractEndDate" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractEndDateInexistent" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractEndDateInvalid" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestUpdateContractEndDateLTStartDate" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestDropContractNullName" />
+<Add Test="ServiceProviderUnitTests.ContractTest.TestDropContractInexistent" />
+
 
 </Playlist>
