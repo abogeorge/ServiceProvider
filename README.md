@@ -13,7 +13,7 @@
 * ServiceProvider\DataMapper\App.config
 * ServiceProvider\ServiceProviderUnitTests\App.config
 
-Edit <connectionStrings> to fit your requirements.
+Edit <code>connectionStrings</code> to fit your requirements.
 
 * Logger:
 
