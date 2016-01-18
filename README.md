@@ -13,7 +13,7 @@
 * ServiceProvider\DataMapper\App.config
 * ServiceProvider\ServiceProviderUnitTests\App.config
 
-Edit <code>connectionStrings</code> to fit your requirements.
+Edit <code>&lt;connectionStrings&gt;</code> to fit your requirements.
 
 * Logger:
 
@@ -21,8 +21,21 @@ Since this application is using log4net for parallel logging (file and database)
 
 ServiceProvider\ServiceLayer\log4.config
 
-Under <appender name="FileAppender" ... > <file value="D:\\log.txt" />, add logging location.
- ServiceProvider\ServiceLayer\app.config
+Under <code>&lt;appender name="FileAppender" ... &gt; &lt;file value="D:\\log.txt" /&gt;</code>, add logging location. The connection from App.config to log4.config is already configured so you don't have to worry about it.
 
-- ServiceProvider\ServiceProviderUnitTests\App.config
+Under <code>&lt;appender name="AdoNetAppender" ... &gt; &lt;connectionString value= /&gt;</code>, add database connection.
 
+Go to SQL Server, create a database e.g. service_provider_log and paste the following code:
+
+<code>CREATE TABLE [dbo].[Log] (
+    [Id] [int] IDENTITY (1, 1) NOT NULL,
+    [Date] [datetime] NOT NULL,
+    [Thread] [varchar] (255) NOT NULL,
+    [Level] [varchar] (50) NOT NULL,
+    [Logger] [varchar] (255) NOT NULL,
+    [Message] [varchar] (4000) NOT NULL,
+    [Exception] [varchar] (2000) NULL
+)</code>
+
+## About
+--------
