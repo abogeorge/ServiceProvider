@@ -27,15 +27,15 @@ Under <code>&lt;appender name="AdoNetAppender" ... &gt; &lt;connectionString val
 
 Go to SQL Server, create a database e.g. service_provider_log and paste the following code:
 
-<code>CREATE TABLE [dbo].[Log] (
-    [Id] [int] IDENTITY (1, 1) NOT NULL,
-    [Date] [datetime] NOT NULL,
-    [Thread] [varchar] (255) NOT NULL,
-    [Level] [varchar] (50) NOT NULL,
-    [Logger] [varchar] (255) NOT NULL,
-    [Message] [varchar] (4000) NOT NULL,
-    [Exception] [varchar] (2000) NULL
-)</code>
+<code>CREATE TABLE [dbo].[Log] (</code>
+<code>    [Id] [int] IDENTITY (1, 1) NOT NULL,</code>
+<code>    [Date] [datetime] NOT NULL,</code>
+<code>    [Thread] [varchar] (255) NOT NULL,</code>
+<code>    [Level] [varchar] (50) NOT NULL,</code>
+<code>    [Logger] [varchar] (255) NOT NULL,</code>
+<code>    [Message] [varchar] (4000) NOT NULL,</code>
+<code>    [Exception] [varchar] (2000) NULL</code>
+<code>)</code>
 
 ## About
 --------
