@@ -25,17 +25,7 @@ Under <code>&lt;appender name="FileAppender" ... &gt; &lt;file value="D:\\log.tx
 
 Under <code>&lt;appender name="AdoNetAppender" ... &gt; &lt;connectionString value= /&gt;</code>, add database connection.
 
-Go to SQL Server, create a database e.g. service_provider_log and paste the following code:
-
-<code>CREATE TABLE [dbo].[Log] (</code>
-<code>    [Id] [int] IDENTITY (1, 1) NOT NULL,</code>
-<code>    [Date] [datetime] NOT NULL,</code>
-<code>    [Thread] [varchar] (255) NOT NULL,</code>
-<code>    [Level] [varchar] (50) NOT NULL,</code>
-<code>    [Logger] [varchar] (255) NOT NULL,</code>
-<code>    [Message] [varchar] (4000) NOT NULL,</code>
-<code>    [Exception] [varchar] (2000) NULL</code>
-<code>)</code>
+Go to SQL Server, create a database e.g. service_provider_log and paste the code from [MS SQL Server section](https://logging.apache.org/log4net/release/config-examples.html). 
 
 ## About
 --------
