@@ -1,6 +1,6 @@
 ## Description
 --------------
-* This project contains a C# solution for a basic service provider. See About section for more info.
+* The project contains a C# solution for a basic service provider. See About section for more info.
 
 ## Setup
 --------
